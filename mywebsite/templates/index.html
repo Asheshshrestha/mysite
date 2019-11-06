@@ -1,24 +1,25 @@
 <!doctype html>
+{% load static %}
 <html lang="en">
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="img/favicon.png" type="image/png">
-        <title>MeetMe Personal</title>
+        <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png">
+        <title>ASHESH SHRESTHA</title>
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="vendors/linericon/style.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-        <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
-        <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
-        <link rel="stylesheet" href="vendors/animate-css/animate.css">
-        <link rel="stylesheet" href="vendors/popup/magnific-popup.css">
-        <link rel="stylesheet" href="vendors/flaticon/flaticon.css">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/lightbox/simpleLightbox.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/animate-css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/popup/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/flaticon/flaticon.css' %}">
         <!-- main css -->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
     </head>
     <body>
         
@@ -28,7 +29,7 @@
             	<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="container box_1620">
 						<!-- Brand and toggle get grouped for better mobile display -->
-						<a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+						<a class="navbar-brand logo_h" href="index.html"><img src="{% static 'img/logo.png' %}" height="50px" alt=""></a>
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -37,7 +38,7 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav ml-auto">
-								<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
+								<li class="nav-item active"><a class="nav-link" href="{% url 'home'%}">Home</a></li> 
 								<li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li> 
 								<li class="nav-item"><a class="nav-link" href="services.html">Services</a></li> 
 								<li class="nav-item submenu dropdown">
@@ -70,24 +71,24 @@
 					<div class="banner_content">
 						<div class="media">
 							<div class="d-flex">
-								<img src="img/personal.jpg" alt="">
+								<img src="{% static 'img/mee.jpg' %}" class="rounded" alt="">
 							</div>
 							<div class="media-body">
 								<div class="personal_text">
 									<h6>Hello Everybody, i am</h6>
-									<h3>Donald McKinney</h3>
-									<h4>Junior UI/UX Developer</h4>
+									<h3>ASHESH SHRESTHA</h3>
+									<h4>Junior Django Developer</h4>
 									<p>You will begin to realise why this exercise is called the Dickens Pattern (with reference to the ghost showing Scrooge some different futures)</p>
 									<ul class="list basic_info">
-										<li><a href="#"><i class="lnr lnr-calendar-full"></i> 31st December, 1992</a></li>
-										<li><a href="#"><i class="lnr lnr-phone-handset"></i> 44 (012) 6954 783</a></li>
-										<li><a href="#"><i class="lnr lnr-envelope"></i> businessplan@donald</a></li>
-										<li><a href="#"><i class="lnr lnr-home"></i> Santa monica bullevard</a></li>
+										<li><a href="#"><i class="lnr lnr-calendar-full"></i> 16th April, 1998</a></li>
+										<li><a href="#"><i class="lnr lnr-phone-handset"></i> (+977) 986 292 0744</a></li>
+										<li><a href="#"><i class="lnr lnr-envelope"></i> asheshshrestha2@gmail.com</a></li>
+										<li><a href="#"><i class="lnr lnr-home"></i> Bhaktapur Lokanthali-16 Dibyaswori</a></li>
 									</ul>
 									<ul class="list personal_social">
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+										<li><a href="https://www.facebook.com/ashesh.shrestha.7731" target="_blank"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="https://twitter.com/AsheshShresth14" target="_blank"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="https://www.linkedin.com/in/ashesh-shrestha-37a122171/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
 									</ul>
 								</div>
 							</div>
@@ -201,7 +202,7 @@
 									<span></span>
 									<div class="media">
 										<div class="d-flex">
-											<p>March 2017 to present</p>
+											<p>March 201700 to present</p>
 										</div>
 										<div class="media-body">
 											<h4>Colorlib</h4>
@@ -337,8 +338,8 @@
         			<div class="col-lg-4 col-md-4 col-sm-6 brand manipul design print">
         				<div class="h_gallery_item">
         					<div class="g_img_item">
-        						<img class="img-fluid" src="img/gallery/project-1.jpg" alt="">
-        						<a class="light" href="img/gallery/project-1.jpg"><img src="img/gallery/icon.png" alt=""></a>
+        						<img class="img-fluid" src="{% static 'img/gallery/project-1.jpg' %}" alt="">
+        						<a class="light" href="{% static 'img/gallery/project-1.jpg' %}"><img src="{% static 'img/gallery/icon.png' %}" alt=""></a>
         					</div>
         					<div class="g_item_text">
         						<h4>3D Helmet Design</h4>
@@ -349,8 +350,8 @@
         			<div class="col-lg-4 col-md-4 col-sm-6 brand manipul creative">
         				<div class="h_gallery_item">
         					<div class="g_img_item">
-        						<img class="img-fluid" src="img/gallery/project-2.jpg" alt="">
-        						<a class="light" href="img/gallery/project-2.jpg"><img src="img/gallery/icon.png" alt=""></a>
+        						<img class="img-fluid" src="{% static 'img/gallery/project-2.jpg' %}" alt="">
+        						<a class="light" href="{% static 'img/gallery/project-2.jpg' %}"><img src="{% static 'img/gallery/icon.png' %}" alt=""></a>
         					</div>
         					<div class="g_item_text">
         						<h4>2D Vinyl Design</h4>
@@ -361,8 +362,8 @@
         			<div class="col-lg-4 col-md-4 col-sm-6 manipul creative design print">
         				<div class="h_gallery_item">
         					<div class="g_img_item">
-        						<img class="img-fluid" src="img/gallery/project-3.jpg" alt="">
-        						<a class="light" href="img/gallery/project-3.jpg"><img src="img/gallery/icon.png" alt=""></a>
+        						<img class="img-fluid" src="{% static 'img/gallery/project-3.jpg' %}" alt="">
+        						<a class="light" href="{% static 'img/gallery/project-3.jpg' %}"><img src="{% static 'img/gallery/icon.png' %}" alt=""></a>
         					</div>
         					<div class="g_item_text">
         						<h4>Creative Poster Design</h4>
@@ -373,8 +374,8 @@
         			<div class="col-lg-4 col-md-4 col-sm-6 brand creative print">
         				<div class="h_gallery_item">
         					<div class="g_img_item">
-        						<img class="img-fluid" src="img/gallery/project-4.jpg" alt="">
-        						<a class="light" href="img/gallery/project-4.jpg"><img src="img/gallery/icon.png" alt=""></a>
+        						<img class="img-fluid" src="{% static 'img/gallery/project-4.jpg' %}" alt="">
+        						<a class="light" href="{% static 'img/gallery/project-4.jpg' %}"><img src="{% static 'img/gallery/icon.png' %}" alt=""></a>
         					</div>
         					<div class="g_item_text">
         						<h4>Embosed Logo Design</h4>
@@ -385,8 +386,8 @@
         			<div class="col-lg-4 col-md-4 col-sm-6 brand manipul design">
         				<div class="h_gallery_item">
         					<div class="g_img_item">
-        						<img class="img-fluid" src="img/gallery/project-5.jpg" alt="">
-        						<a class="light" href="img/gallery/project-5.jpg"><img src="img/gallery/icon.png" alt=""></a>
+        						<img class="img-fluid" src="{% static 'img/gallery/project-5.jpg' %}" alt="">
+        						<a class="light" href="{% static 'img/gallery/project-5.jpg' %}"><img src="{% static 'img/gallery/icon.png' %}" alt=""></a>
         					</div>
         					<div class="g_item_text">
         						<h4>3D Disposable Bottle</h4>
@@ -397,8 +398,8 @@
         			<div class="col-lg-4 col-md-4 col-sm-6 brand creative">
         				<div class="h_gallery_item">
         					<div class="g_img_item">
-        						<img class="img-fluid" src="img/gallery/project-6.jpg" alt="">
-        						<a class="light" href="img/gallery/project-6.jpg"><img src="img/gallery/icon.png" alt=""></a>
+        						<img class="img-fluid" src="{% static 'img/gallery/project-6.jpg' %}" alt="">
+        						<a class="light" href="{% static 'img/gallery/project-6.jpg' %}"><img src="{% static 'img/gallery/icon.png' %}" alt=""></a>
         					</div>
         					<div class="g_item_text">
         						<h4>3D Logo Design</h4>
@@ -520,20 +521,20 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/popper.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/stellar.js"></script>
-        <script src="vendors/lightbox/simpleLightbox.min.js"></script>
-        <script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
-        <script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
-        <script src="vendors/isotope/isotope.pkgd.min.js"></script>
-        <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
-        <script src="vendors/popup/jquery.magnific-popup.min.js"></script>
-        <script src="js/jquery.ajaxchimp.min.js"></script>
-        <script src="vendors/counter-up/jquery.waypoints.min.js"></script>
-        <script src="vendors/counter-up/jquery.counterup.min.js"></script>
-        <script src="js/mail-script.js"></script>
-        <script src="js/theme.js"></script>
+        <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'js/popper.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/stellar.js' %}"></script>
+        <script src="{% static 'vendors/lightbox/simpleLightbox.min.js' %}"></script>
+        <script src="{% static 'vendors/nice-select/js/jquery.nice-select.min.js' %}"></script>
+        <script src="{% static 'vendors/isotope/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'vendors/isotope/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'vendors/popup/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'vendors/counter-up/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static 'vendors/counter-up/jquery.counterup.min.js' %}"></script>
+        <script src="{% static 'js/mail-script.js' %}"></script>
+        <script src="{% static 'js/theme.js' %}"></script>
     </body>
 </html>
