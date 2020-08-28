@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     #my apps
     'mysite',
     'project',
-    'mydata'
+    'mydata',
+
+    #third party
+    'faicon'
 ]
 
 MIDDLEWARE = [
@@ -131,3 +134,6 @@ STATICFILES_DIRS = [
 
 MEDIA_URL ='/projectpic/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'projectpic')
+
+FAICON_YAML_FILE = 'fontawesome/metadata/icons.yml'
+FAICON_CSS_URL = 'fontawesome/css/all.css'

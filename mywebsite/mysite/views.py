@@ -1,15 +1,17 @@
 from django.shortcuts import render
 from project.models import ProjectName
-from mydata.models import PersonalData
+from mydata.models import PersonalData,AboutMyself
 # Create your views here.
 
 def home(request):
     template_name="pages/index/index.html"
     prof_data = PersonalData.objects.first()
+    about_data = AboutMyself.objects.first()
     project_list = ProjectName.objects.all()[:6]
     context = {
                 'projects':project_list,
-                'profile':prof_data
+                'profile':prof_data,
+                'about' : about_data
                 }
     return render(request,template_name,context=context)
 

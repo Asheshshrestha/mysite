@@ -1,5 +1,5 @@
 from django.db import models
-
+from faicon.fields import FAIconField
 # Create your models here.
 
 class PersonalData(models.Model):
@@ -19,3 +19,29 @@ class PersonalData(models.Model):
 
     def __str__(self):
         return self.first_name
+
+class WorkCount(models.Model):
+
+    work_name = models.CharField(max_length=20,null=True)
+    count = models.CharField(max_length=10,null=True)
+    icon = FAIconField()
+
+    def __str__(self):
+        return self.work_name
+
+class Skills(models.Model):
+    
+    skill_name =models.CharField(max_length=30,null=True)
+    percentage = models.CharField(max_length=2,null=True)
+
+    def __str__(self):
+        return self.skill_name
+
+class AboutMyself(models.Model):
+
+    short_desc = models.CharField(max_length=300,null=True)
+    work_count = models.ManyToManyField(WorkCount,null=True)
+    Skills = models.ManyToManyField(Skills,null=True)
+
+    def __str__(self):
+        return self.short_desc[:10]
