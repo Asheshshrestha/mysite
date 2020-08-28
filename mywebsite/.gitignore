@@ -118,5 +118,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
+# Enviroment 
+venv/
 # End of https://www.gitignore.io/api/django
+
+# image folder
+projectpic/

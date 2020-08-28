@@ -1,0 +1,30 @@
+
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block head %}
+{% include 'slices/head.html' %}
+{% endblock head %}
+
+{%block navbar %}
+{% include 'slices/navbar.html'%}
+{% endblock navbar%}
+
+   {% block body %}
+
+        {%block breadcurm %}
+		{% include 'pages/contact_us/slices/breadcurm.html'%}
+		{% endblock breadcurm%}
+
+        {%block contact_area %}
+		{% include 'pages/contact_us/slices/contact_area.html'%}
+		{% endblock contact_area%}
+        
+  {% endblock body %}
+  
+{% block footer %}
+{% include 'slices/footer.html'%}
+{% endblock footer%}
+{% block scripts %}
+{%include 'slices/scripts.html'%}
+{% endblock scripts%}

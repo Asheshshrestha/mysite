@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     #my apps
     'mysite',
+    'project',
+    'mydata'
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     
 ]
+
+MEDIA_URL ='/projectpic/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'projectpic')

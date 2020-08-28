@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from mysite.views import aboutus,contactus,services
 
 urlpatterns = [
-   
+   path('about/',aboutus,name="aboutus"),
+   path('contact/',contactus,name="contactus"),
+   path('services/',services,name="services")
 ]

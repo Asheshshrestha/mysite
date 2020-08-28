@@ -1,0 +1,35 @@
+{% load static %}
+<!--================Home Banner Area =================-->
+        <section class="home_banner_area">
+           	<div class="container box_1620">
+           		<div class="banner_inner d-flex align-items-center">
+					<div class="banner_content">
+						<div class="media">
+							<div class="d-flex">
+								<img src="{{ profile.image.url }}" class="rounded" alt="">
+							</div>
+							<div class="media-body">
+								<div class="personal_text">
+									<h6>Hello Everybody, i am</h6>
+									<h3>{{ profile.first_name }} {{profile.last_name}}</h3>
+									<h4>{{ profile.carrer_status }}</h4>
+									<p>{{ profile.short_desc }}</p>
+									<ul class="list basic_info">
+										<li><a href="#"><i class="lnr lnr-calendar-full"></i> {{ profile.dob }}</a></li>
+										<li><a href="#"><i class="lnr lnr-phone-handset"></i> {{ profile.phone }}</a></li>
+										<li><a href="#"><i class="lnr lnr-envelope"></i> {{ profile.mail }}</a></li>
+										<li><a href="#"><i class="lnr lnr-home"></i> {{ profile.current_location }}</a></li>
+									</ul>
+									<ul class="list personal_social">
+										<li><a href="{{ profile.fb_link }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="{{ profile.tw_link }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="{{ profile.lin_link }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->

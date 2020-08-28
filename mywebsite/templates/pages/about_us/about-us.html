@@ -1,0 +1,39 @@
+
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block head %}
+{% include 'slices/head.html' %}
+{% endblock head %}
+
+{%block navbar %}
+{% include 'slices/navbar.html'%}
+{% endblock navbar%}
+
+   {% block body %}
+  
+        {%block breadcurm %}
+		{% include 'pages/about_us/slices/breadcurm.html'%}
+		{% endblock breadcurm%}
+
+        {%block banner %}
+		{% include 'pages/about_us/slices/banner.html'%}
+		{% endblock banner%}
+        
+        {% block welcome %}
+		{% include 'pages/index/slices/welcome.html'%}
+		{% endblock welcome%}
+
+        {% block testimonials %}
+		{% include 'pages/index/slices/testimonials.html'%}
+		{% endblock testimonials %}
+          
+        
+	{% endblock body %}
+{% block footer %}
+{% include 'slices/footer.html'%}
+{% endblock footer%}
+
+{% block scripts %}
+{%include 'slices/scripts.html'%}
+{% endblock scripts%}
