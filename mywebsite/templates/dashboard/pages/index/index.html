@@ -1,0 +1,97 @@
+{% include 'dashboard/admin_base_layout.html' %}
+
+{% load static %}
+
+<!-- head -->
+{% block head %}
+{% include 'dashboard/slices/head.html' %}
+{% endblock head %}
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    {% block sidebar %}
+    {% include 'dashboard/slices/sidebar.html' %}
+    {% endblock sidebar %}
+      <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        {% block topbar %}
+        {% include 'dashboard/slices/topbar.html' %}
+        {% endblock topbar %}
+
+        {% block body %}
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+        {% block heading %}
+        {% include 'dashboard/pages/index/slices/page_heading.html'%}
+        {% endblock heading %}
+
+          <!-- Content Row -->
+          <div class="row">
+
+          {% block card1 %}
+          {% include 'dashboard/pages/index/slices/card1.html'%}
+          {% endblock card1%}
+
+          {% block card2 %}
+          {% include 'dashboard/pages/index/slices/card2.html'%}
+          {% endblock card2%}
+        
+
+          {% block card3 %}
+          {% include 'dashboard/pages/index/slices/card3.html'%}
+          {% endblock card3%}
+        
+          {% block card4 %}
+          {% include 'dashboard/pages/index/slices/card4.html'%}
+          {% endblock card4%}
+        
+
+           
+
+          <!-- Content Row -->
+          {% block row %}
+          {% include 'dashboard/pages/index/slices/content_row.html'%}
+          {% endblock row%}
+        
+
+          <!-- Content Row -->
+        
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+        {% endblock body %}
+
+ 
+        {% block footer %}
+        {% include 'dashboard/slices/footer.html' %}
+        {% endblock footer %}
+
+<!--scorll button-->
+        {% block scrollbthn %}
+        {% include 'dashboard/slices/scrollbtn.html' %}
+        {% endblock scrollbthn %}
+
+ <!--logout modal-->
+        {% block logoutmodal %}
+        {% include 'dashboard/slices/logoutmodal.html' %}
+        {% endblock logoutmodal %}
+
+  <!--scripts-->
+        {% block scripts %}
+        {% include 'dashboard/slices/scripts.html' %}
+        {% endblock scripts %}

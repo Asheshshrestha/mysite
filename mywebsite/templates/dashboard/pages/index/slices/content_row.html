@@ -1,0 +1,15 @@
+{% load static %}   
+
+          <div class="row">
+
+            <!-- Area Chart -->
+            {% block box1 %}
+          {% include 'dashboard/pages/index/slices/box1.html'%}
+          {% endblock box1%}
+
+            <!-- Pie Chart -->
+             {% block box2 %}
+          {% include 'dashboard/pages/index/slices/box2.html'%}
+          {% endblock box2%}
+
+          </div>
