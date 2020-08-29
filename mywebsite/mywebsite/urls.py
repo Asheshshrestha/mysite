@@ -24,5 +24,6 @@ urlpatterns = [
     path('ashesh/',include('mysite.urls')),
     path('',home,name="home"),
     path('faicon/',include('faicon.urls')),
-    path('dashboard/',include('mydata.urls'))
+    path('dashboard/',include('mydata.urls')),
+    path('account/',include('accounts.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -42,9 +42,11 @@ INSTALLED_APPS = [
     'mysite',
     'project',
     'mydata',
+    'accounts',
 
     #third party
-    'faicon'
+    'faicon',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -131,9 +133,12 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     
 ]
+LOGIN_REDIRECT_URL = '/dashboard/'
 
 MEDIA_URL ='/projectpic/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'projectpic')
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 FAICON_YAML_FILE = 'fontawesome/metadata/icons.yml'
 FAICON_CSS_URL = 'fontawesome/css/all.css'
