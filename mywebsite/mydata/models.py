@@ -82,3 +82,15 @@ class OfferToClient(models.Model):
     heading = models.CharField(max_length=100,null=True)
     sub_desc = models.CharField(max_length=300,null=True)
     offers = models.ManyToManyField(Offers)
+
+class TestimonialMessage(models.Model):
+
+    star_choice = (('1','1'),('2','2'),('3','3'),('4','4'),('5','5'))
+    message = models.CharField(max_length=1000,null=True)
+    name = models.CharField(max_length=50,null=True)
+    stars = models.CharField(max_length=1,choices=star_choice)
+
+class Testimonials(models.Model):
+
+    sub_desc = models.CharField(max_length=500,null=True)
+    testimonials = models.ManyToManyField(TestimonialMessage)

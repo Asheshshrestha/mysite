@@ -4,7 +4,8 @@ from mydata.models import (PersonalData,
                             AboutMyself,
                             Experience,
                             Education,
-                            OfferToClient)
+                            OfferToClient,
+                            Testimonials)
 # Create your views here.
 
 def home(request):
@@ -16,21 +17,27 @@ def home(request):
     experience_data = Experience.objects.all().order_by('-start_date')
     offer_to_clients = OfferToClient.objects.first()
     project_list = ProjectName.objects.all()[:6]
+    testimonials = Testimonials.objects.first()
     context = {
                 'projects':project_list,
                 'profile':prof_data,
                 'about' : about_data,
                 'experience':experience_data,
                 'education':education_data,
-                'offer':offer_to_clients
+                'offer':offer_to_clients,
+                'testimonials':testimonials
                 }
     return render(request,template_name,context=context)
 
 def aboutus(request):
     template_name = "pages/about_us/about-us.html"
     prof_data = PersonalData.objects.first()
+    about_data = AboutMyself.objects.first()
+    testimonials = Testimonials.objects.first()
     context = {
-                'profile':prof_data
+                'profile':prof_data,
+                'about' : about_data,
+                 'testimonials':testimonials
     }
     return render(request,template_name,context=context)
 
@@ -44,7 +51,13 @@ def contactus(request):
 
 def services(request):
     template_name = "pages/services/services.html"
-    return render(request,template_name)
+    offer_to_clients = OfferToClient.objects.first()
+    testimonials = Testimonials.objects.first
+    context = {
+                'offer':offer_to_clients,
+                'testimonials':testimonials
+                }
+    return render(request,template_name,context=context)
 
 def single_blog(request):
     template_name = "single-blog.html"
