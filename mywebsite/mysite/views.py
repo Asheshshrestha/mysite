@@ -1,17 +1,22 @@
 from django.shortcuts import render
 from project.models import ProjectName
-from mydata.models import PersonalData,AboutMyself
+from mydata.models import PersonalData,AboutMyself,Experience,Education
 # Create your views here.
 
 def home(request):
+
     template_name="pages/index/index.html"
     prof_data = PersonalData.objects.first()
     about_data = AboutMyself.objects.first()
+    education_data = Education.objects.all().order_by('-start_date')
+    experience_data = Experience.objects.all().order_by('-start_date')
     project_list = ProjectName.objects.all()[:6]
     context = {
                 'projects':project_list,
                 'profile':prof_data,
-                'about' : about_data
+                'about' : about_data,
+                'experience':experience_data,
+                'education':education_data
                 }
     return render(request,template_name,context=context)
 

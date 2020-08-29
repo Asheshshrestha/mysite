@@ -45,3 +45,29 @@ class AboutMyself(models.Model):
 
     def __str__(self):
         return self.short_desc[:10]
+
+class Experience(models.Model):
+
+    e_type = (('Full-time','Full-time'),
+                ('Part-time','Part-time'),
+                ('Self-employed','Self-employed'),
+                ('Freelance','Freelance'),
+                ('Contract','Contract'),
+                ('Internship','Internship'),
+                ('Apprenticeship','Apperenticeship'))
+    job_title = models.CharField( max_length=50,null=True)
+    employee_type = models.CharField(max_length=20,choices=e_type,null=True)
+    company_name = models.CharField(max_length=100,null=True)
+    company_location = models.CharField(max_length=200,null=True)
+    current_working = models.BooleanField(default=False)
+    start_date = models.DateField(null=True)
+    end_date = models.DateField(null=True)
+
+class Education(models.Model):
+    
+    institute_name = models.CharField(max_length=200,null=True)
+    level = models.CharField(max_length=200,null=True)
+    institute_location = models.CharField(max_length=200,null=True)
+    current_studying = models.BooleanField(default=False)
+    start_date = models.DateField(null=True)
+    end_date = models.DateField(null=True)

@@ -14,82 +14,38 @@
 					<div class="tab-content" id="myTabContent">
 						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 							<ul class="list">
+							{% for exp in experience %}
 								<li>
 									<span></span>
 									<div class="media">
 										<div class="d-flex">
-											<p>March 201700 to present</p>
+											<p>{{ exp.start_date }} to {%if exp.current_working %}present {% else %} {{ exp.end_date }} {% endif %}</p>
 										</div>
 										<div class="media-body">
-											<h4>Colorlib</h4>
-											<p>Senior Web Developer <br />Santa monica, Los angeles</p>
+											<h4>{{ exp.company_name }}</h4>
+											<p>{{ exp.job_title}} {{ exp.employee_type }} <br />{{ exp.company_location}}</p>
 										</div>
 									</div>
 								</li>
-								<li>
-									<span></span>
-									<div class="media">
-										<div class="d-flex">
-											<p>March 2017 to present</p>
-										</div>
-										<div class="media-body">
-											<h4>Colorlib</h4>
-											<p>Senior Web Developer <br />Santa monica, Los angeles</p>
-										</div>
-									</div>
-								</li>
-								<li>
-								<span></span>
-									<div class="media">
-										<div class="d-flex">
-											<p>March 2017 to present</p>
-										</div>
-										<div class="media-body">
-											<h4>Colorlib</h4>
-											<p>Senior Web Developer <br />Santa monica, Los angeles</p>
-										</div>
-									</div>
-								</li>
+							{% endfor %}
 							</ul>
 						</div>
 						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 							<ul class="list">
+							{% for edu in education %}
 								<li>
 									<span></span>
 									<div class="media">
 										<div class="d-flex">
-											<p>March 2017 to present</p>
+											<p>{{ edu.start_date }} to {%if edu.current_studying %}present {% else %} {{ edu.end_date }} {% endif %}</p>
 										</div>
 										<div class="media-body">
-											<h4>Colorlib</h4>
-											<p>Senior Web Developer <br />Santa monica, Los angeles</p>
+											<h4>{{ edu.institute_name }}</h4>
+											<p>{{ edu.level }} <br />{{ edu.institute_location}}</p>
 										</div>
 									</div>
 								</li>
-								<li>
-									<span></span>
-									<div class="media">
-										<div class="d-flex">
-											<p>March 2017 to present</p>
-										</div>
-										<div class="media-body">
-											<h4>Colorlib</h4>
-											<p>Senior Web Developer <br />Santa monica, Los angeles</p>
-										</div>
-									</div>
-								</li>
-								<li>
-								<span></span>
-									<div class="media">
-										<div class="d-flex">
-											<p>March 2017 to present</p>
-										</div>
-										<div class="media-body">
-											<h4>Colorlib</h4>
-											<p>Senior Web Developer <br />Santa monica, Los angeles</p>
-										</div>
-									</div>
-								</li>
+							{% endfor %}
 							</ul>
 						</div>
 					</div>
