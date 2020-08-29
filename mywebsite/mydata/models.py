@@ -71,3 +71,14 @@ class Education(models.Model):
     current_studying = models.BooleanField(default=False)
     start_date = models.DateField(null=True)
     end_date = models.DateField(null=True)
+
+class Offers(models.Model):
+    icon = FAIconField()
+    title = models.CharField(max_length=100,null=True)
+    short_desc = models.CharField(max_length=500,null=True)
+
+class OfferToClient(models.Model):
+
+    heading = models.CharField(max_length=100,null=True)
+    sub_desc = models.CharField(max_length=300,null=True)
+    offers = models.ManyToManyField(Offers)
