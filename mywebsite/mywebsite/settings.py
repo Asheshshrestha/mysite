@@ -135,6 +135,7 @@ STATICFILES_DIRS = [
     
 ]
 LOGIN_REDIRECT_URL = '/dashboard/'
+LOGIN_URL = '/account/login'
 
 MEDIA_URL ='/projectpic/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'projectpic')

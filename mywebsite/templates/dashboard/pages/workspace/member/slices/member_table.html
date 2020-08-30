@@ -1,0 +1,50 @@
+  {% load static %}
+  <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">User Table</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Username</th>
+                      <th>Email</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Staff Status</th>
+                      <th>Last Login</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Username</th>
+                      <th>Email</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Staff Status</th>
+                      <th>Last Login</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <tr>
+                    {% for user in users %}
+                      <td>{{ user.username }}</td>
+                      <td>{{ user.email }}</td>
+                      <td>{{ user.first_name }}</td>
+                      <td>{{user.last_name }}</td>
+                      <td>{% if user.is_staff %}<i class="fas fa-check-circle"></i>{% else %}<i class="fas fa-times-circle"></i>{% endif %}</td>
+                      <td>{{ user.last_login }}</td>
+                    </tr>
+                    {% endfor%}
+                  </tbody>
+                </table>
+              </div>
+        {% block pagination %}
+        {% include 'dashboard/pages/workspace/member/slices/pagination.html' %}
+        {% endblock pagination %}
+       
+            </div>
+       
+          </div>
