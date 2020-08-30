@@ -31,6 +31,10 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+        {% block message %}
+        {% include 'dashboard/slices/message.html'%}
+        {% endblock message %}
+
           <!-- Page Heading -->
         {% block heading %}
         {% include 'dashboard/pages/index/slices/page_heading.html'%}

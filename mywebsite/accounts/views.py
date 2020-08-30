@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 
@@ -64,6 +65,7 @@ def user_update(request):
         form = UserUpadateForm(data=request.POST, instance=request.user)
         if form.is_valid():
             form.save()
+            messages.success(request,'Your profile was updated.')
             return redirect('user_update')
     else:
         user = User.objects.get(username = request.user.username)

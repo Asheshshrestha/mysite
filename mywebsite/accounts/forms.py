@@ -33,11 +33,13 @@ class SignUpForm(UserCreationForm):
 
 class UserUpadateForm(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'readonly':'readonly'}))
+    is_staff = forms.BooleanField(widget=forms.CheckboxInput(attrs={'disable':'disable'}))
     class Meta:
         model = User
         fields = (
             'username',
             'email',
             'first_name',
-            'last_name'
+            'last_name',
+            'is_staff'
         )

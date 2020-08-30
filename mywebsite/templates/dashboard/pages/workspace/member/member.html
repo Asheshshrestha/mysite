@@ -31,6 +31,11 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+
+        {% block message %}
+        {% include 'dashboard/slices/message.html'%}
+        {% endblock message %}
+        
         {% block header %}
         {% include 'dashboard/pages/workspace/member/slices/header.html' %}
         {% endblock header %}
