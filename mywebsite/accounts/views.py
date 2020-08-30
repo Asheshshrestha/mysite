@@ -1,6 +1,11 @@
 from django.shortcuts import redirect, render
 from accounts.forms import SignUpForm
 from django.views import View
+from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -28,4 +33,23 @@ class SignUpView(View):
 
         else:
             return render(request, 'dashboard/pages/account/register.html', {'form':form})
+
+@login_required
+def change_password(request):
+
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(
+                request, 'Your password was successfully updated!')
+            return redirect('login')
+        else:
+            messages.warning(
+                request, 'There was an error changing your password!')
+    else:
+        form = PasswordChangeForm(request.user)
+
+    return render(request, 'dashboard/pages/personal/security/change_password.html', {'form': form}) 
 

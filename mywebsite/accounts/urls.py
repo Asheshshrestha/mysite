@@ -1,5 +1,5 @@
 from django.urls import path
-from accounts.views import SignUpView
+from accounts.views import SignUpView,change_password
 from django.contrib.auth.views import (LoginView,
                                         LogoutView,
                                         PasswordResetView,
@@ -31,4 +31,5 @@ urlpatterns = [
              template_name='dashboard/pages/account/password_reset_complete.html'
          ),
          name='password_reset_complete'),
+    path('change/password/',change_password,name='change_password')
 ]
