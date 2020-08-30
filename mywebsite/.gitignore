@@ -127,3 +127,4 @@ projectpic/
 
 *migrations/
 *.bat
+.env
