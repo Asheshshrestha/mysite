@@ -1,10 +1,12 @@
-from django.shortcuts import redirect, render
-from accounts.forms import SignUpForm
+from django.shortcuts import get_object_or_404, redirect, render
+from accounts.forms import SignUpForm,UserUpadateForm
 from django.views import View
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
 
 
 # Create your views here.
@@ -37,6 +39,7 @@ class SignUpView(View):
 @login_required
 def change_password(request):
 
+    template_name = 'dashboard/pages/personal/security/change_password.html'
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
@@ -51,5 +54,19 @@ def change_password(request):
     else:
         form = PasswordChangeForm(request.user)
 
-    return render(request, 'dashboard/pages/personal/security/change_password.html', {'form': form}) 
+    return render(request, template_name, {'form': form}) 
 
+@login_required
+def user_update(request):
+
+    template_name = 'dashboard/pages/personal/account/user_update.html'
+    if request.method == 'POST':
+        form = UserUpadateForm(data=request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('user_update')
+    else:
+        user = User.objects.get(username = request.user.username)
+        form = UserUpadateForm(instance=user)
+    
+    return render(request,template_name,{'form':form})

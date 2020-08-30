@@ -33,16 +33,15 @@
 
           <!-- Page Heading -->
         {% block heading %}
-        {% include 'dashboard/pages/personal/security/slices/page_heading.html'%}
+        {% include 'dashboard/pages/personal/account/slices/page_heading.html'%}
         {% endblock heading %}
 
           <!-- Content Row -->
           <div class="row">
 
-          
-        {% block form_pw_cng %}
-        {% include 'dashboard/pages/personal/security/slices/change_pw_form.html'%}
-        {% endblock form_pw_cng %}
+        {% block user_updated_form %}
+        {% include 'dashboard/pages/personal/account/slices/user_update_form.html'%}
+        {% endblock user_updated_form %}
 
            
      
