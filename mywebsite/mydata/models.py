@@ -1,5 +1,9 @@
 from django.db import models
 from faicon.fields import FAIconField
+from PIL import Image
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+import sys
 # Create your models here.
 
 class PersonalData(models.Model):
@@ -16,6 +20,24 @@ class PersonalData(models.Model):
     fb_link = models.URLField(null=True)
     tw_link = models.URLField(null=True)
     lin_link = models.URLField(null=True)
+    def save(self):
+    
+		#Opening the uploaded image
+	    im = Image.open(self.image)
+
+	    output = BytesIO()
+
+		#Resize/modify the image
+	    im = im.resize( (668,690) )
+
+		#after modifications, save it to the output
+	    im.save(output, format='JPEG', quality=100)
+	    output.seek(0)
+
+		#change the imagefield value to be the newley modifed image value
+	    self.image = InMemoryUploadedFile(output,'ImageField', "%s.jpg" %self.image.name.split('.')[0], 'image/jpeg', sys.getsizeof(output), None)
+
+	    super(PersonalData,self).save()
 
     def __str__(self):
         return self.first_name

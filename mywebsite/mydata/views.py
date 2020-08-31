@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.db.models import Q
+from mydata.forms import UserIntroForm
+from mydata.models import PersonalData
+from django.contrib import messages
 # Create your views here.
 
 @login_required
@@ -31,3 +34,25 @@ def members(request):
         'users':user
     }
     return render(request,template_name,context)
+
+@login_required
+def general_setting(request):
+
+    template_name = 'dashboard\pages\workspace\general\general.html'
+
+    return render(request,template_name)
+
+@login_required
+def integration_setting(request):
+    data = PersonalData.objects.first()
+    template_name ='dashboard\pages\workspace\integration\integration.html'
+    if request.method == 'POST':
+        form = UserIntroForm(data = request.POST,files=request.FILES,instance=data)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your Personal data is updated')
+            return redirect('integration_setting')
+    else:
+        form = UserIntroForm(instance=data)
+
+    return render(request,template_name,{'form':form,'data':data})
