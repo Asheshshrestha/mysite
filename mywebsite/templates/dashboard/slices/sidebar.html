@@ -42,13 +42,25 @@
           <span>Member</span></a>
       </li>
 
-      <!-- Nav Item - Tables -->
+         <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'integration_setting'%}">
-          <i class="fas fa-fw fa-network-wired"></i>
-          <span>Integration</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Integration</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Components:</h6>
+            <a class="collapse-item" href="{% url 'personal_info'%}">Personal Info</a>
+            <a class="collapse-item" href="{% url 'about_yourself'%}">About Yourself</a>
+            <a class="collapse-item" href="{% url 'personal_info'%}">Education</a>
+            <a class="collapse-item" href="{% url 'personal_info'%}">Experience</a>
+            <a class="collapse-item" href="{% url 'personal_info'%}">Testimonials</a>
+            <a class="collapse-item" href="{% url 'personal_info'%}">My Offers</a>
+            
+          </div>
+        </div>
       </li>
-
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

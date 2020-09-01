@@ -5,7 +5,9 @@ from mydata.models import PersonalData
 class UserIntroForm(forms.ModelForm):
     
     class Meta:
+        
         model = PersonalData
+        widgets = { 'short_desc': forms.Textarea()}
         labels = {
         "fb_link": "Facebook Link",
         "tw_link": "Twitter Link",

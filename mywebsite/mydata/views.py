@@ -43,9 +43,9 @@ def general_setting(request):
     return render(request,template_name)
 
 @login_required
-def integration_setting(request):
+def personal_info_setting(request):
     data = PersonalData.objects.first()
-    template_name ='dashboard\pages\workspace\integration\integration.html'
+    template_name ='dashboard\pages\workspace\integration\intro_setting_page.html'
     if request.method == 'POST':
         form = UserIntroForm(data = request.POST,files=request.FILES,instance=data)
         if form.is_valid():
@@ -56,3 +56,10 @@ def integration_setting(request):
         form = UserIntroForm(instance=data)
 
     return render(request,template_name,{'form':form,'data':data})
+
+@login_required
+def about_yourself_setting(request):
+    
+    template_name = 'dashboard\pages\workspace\integration\\about_yourself_setting_page.html'
+
+    return render(request,template_name)
