@@ -1,0 +1,77 @@
+{% include 'dashboard/admin_base_layout.html' %}
+
+{% load static %}
+
+<!-- head -->
+{% block head %}
+{% include 'dashboard/slices/head.html' %}
+{% endblock head %}
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    {% block sidebar %}
+    {% include 'dashboard/slices/sidebar.html' %}
+    {% endblock sidebar %}
+      <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        {% block topbar %}
+        {% include 'dashboard/slices/topbar.html' %}
+        {% endblock topbar %}
+
+        {% block body %}
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+        {% block message %}
+        {% include 'dashboard/slices/message.html'%}
+        {% endblock message %}
+        
+        {% block header %}
+        {% include 'dashboard\pages\workspace\integration\slices\page_heading.html' %}
+        {% endblock header %}
+        
+        {% block setting_body %}
+        {% include 'dashboard\pages\workspace\integration\skills\slices\skill_delete_warning.html' %}
+        {% endblock setting_body %}
+       
+    
+        
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+       {% endblock body %}
+
+ 
+        {% block footer %}
+        {% include 'dashboard/slices/footer.html' %}
+        {% endblock footer %}
+
+<!--scorll button-->
+        {% block scrollbthn %}
+        {% include 'dashboard/slices/scrollbtn.html' %}
+        {% endblock scrollbthn %}
+
+ <!--logout modal-->
+        {% block logoutmodal %}
+        {% include 'dashboard/slices/logoutmodal.html' %}
+        {% endblock logoutmodal %}
+
+  <!--scripts-->
+        {% block scripts %}
+        {% include 'dashboard\pages\workspace\integration\slices\load_image.html'%}
+        {% include 'dashboard/slices/scripts.html' %}
+        {% endblock scripts %}

@@ -41,4 +41,11 @@ class AboutMyselfForm(forms.ModelForm):
             "short_desc":"Short Description",
             "Skills":"Your Skills"
         }
+        fields = ('short_desc','work_count','Skills')
+
+class SkillsForm(forms.ModelForm):
+
+    class Meta:
+
+        model = Skills
         fields = '__all__'
