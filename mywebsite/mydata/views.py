@@ -3,8 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.db.models import Q
-from mydata.forms import UserIntroForm
-from mydata.models import PersonalData
+from mydata.forms import UserIntroForm,AboutMyselfForm
+from mydata.models import PersonalData,AboutMyself
 from django.contrib import messages
 # Create your views here.
 
@@ -51,7 +51,7 @@ def personal_info_setting(request):
         if form.is_valid():
             form.save()
             messages.success(request,'Your Personal data is updated')
-            return redirect('integration_setting')
+            return redirect('personal_info')
     else:
         form = UserIntroForm(instance=data)
 
@@ -60,6 +60,15 @@ def personal_info_setting(request):
 @login_required
 def about_yourself_setting(request):
     
+    data = AboutMyself.objects.first()
     template_name = 'dashboard\pages\workspace\integration\\about_yourself_setting_page.html'
+    if request.method == 'POST':
+        form = AboutMyselfForm(data = request.POST,files=request.FILES,instance=data)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your About Yourself data is updated')
+            return redirect('about_yourself')
+    else:
+        form = AboutMyselfForm(instance=data)
 
-    return render(request,template_name)
+    return render(request,template_name,{'form':form,'data':data})
