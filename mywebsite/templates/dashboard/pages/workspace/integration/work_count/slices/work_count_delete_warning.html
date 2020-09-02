@@ -1,0 +1,17 @@
+ {% load static %} {% load crispy_forms_tags %}
+<!-- DataTales Example -->
+<div class="card shadow mb-4 col-12">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">About Yourself > Your Work Count > Delete Work Count</h6>
+    </div>
+    <div class="card-body">
+    <h3> Do you really want to delete your Work Count?</h3>
+    <br>
+    <h4> Work Title: {{ data.work_name|capfirst }}</h4>
+    <h4> Work Count: {{ data.count }} </h4>
+    <h4> Icon: <button type="button" class="btn btn-outline-primary"><i class="{{ data.icon.style }} fa-{{ data.icon.icon}}"></i></button></h4>
+    <br>
+    <a  class="btn btn-danger mr-5" href="{% url 'delete_work_count_confirm' work_count_id=data.id %}">Yes,Delete</a>
+    <a  class="btn btn-primary" href="{% url 'skill_list' %}">Cancel</a>
+</div>
+</div>

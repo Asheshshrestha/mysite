@@ -10,7 +10,9 @@ from mydata.views import (dashboard_index,
                             delete_skill_confirm,
                             add_skill,
                             work_count_list,
-                            update_work_count
+                            update_work_count,
+                            delete_work_count,
+                            delete_work_count_confirm
                             )
 
 urlpatterns = [
@@ -25,5 +27,7 @@ urlpatterns = [
     path('settings/workspace/integration/about-yourself/work-counts/update/<int:work_count_id>/',update_work_count,name='update_work_count'),
     path('settings/workspace/integration/about-yourself/skills/add/',add_skill,name='add_skill'),
     path('settings/workspace/integration/about-yourself/skills/delete/<int:skills_id>/',delete_skill,name='delete_skill'),
+    path('settings/workspace/integration/about-yourself/work-count/delete/<int:work_count_id>/',delete_work_count,name='delete_work_count'),
     path('settings/workspace/integration/about-yourself/skills/delete_confirm/<int:skills_id>/',delete_skill_confirm,name='delete_skill_confirm'),
+    path('settings/workspace/integration/about-yourself/work-count/delete_confirm/<int:work_count_id>/',delete_work_count_confirm,name='delete_work_count_confirm'),
 ]

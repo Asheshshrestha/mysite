@@ -31,7 +31,7 @@
                       <td><button type="button" class="btn btn-outline-primary"><i class="{{ user.icon.style }} fa-{{ user.icon.icon}}"></i></button></td>
                       <td>
                         <a type="button" class="btn btn-outline-primary" href="{% url 'update_work_count' work_count_id=user.id %}"><i class="far fa-edit"></i></a>
-                        <a type="button" class="btn btn-outline-danger" href="{% url 'delete_skill' skills_id=user.id %}"><i class="far fa-trash-alt"></i></a>
+                        <a type="button" class="btn btn-outline-danger" href="{% url 'delete_work_count' work_count_id=user.id %}"><i class="far fa-trash-alt"></i></a>
                       </td>
                     </tr>
                     {% endfor%}

@@ -187,9 +187,35 @@ def update_work_count(request,work_count_id):
         form = WorkCountForm(data=request.POST,instance=work_count)
         if form.is_valid():
             form.save()
-            messages.success(request,'Your Skill data is updated')
-            return redirect('skill_list')
+            messages.success(request,'Your Work Count data is updated')
+            return redirect('work_count_list')
     else:
         form = WorkCountForm(instance=work_count)
 
     return render(request,template_name,{'form':form})
+
+
+@login_required
+def delete_work_count(request,work_count_id):
+
+    template_name = 'dashboard\pages\workspace\integration\work_count\work_count_delete.html'
+    work_count = WorkCount.objects.get(id=work_count_id)
+    context = {
+        'data':work_count
+    }
+    return render(request,template_name,context)
+
+
+@login_required
+def delete_work_count_confirm(request,work_count_id):
+
+    template_name = 'dashboard\pages\workspace\integration\work_count\work_count_delete.html'
+    work_count = WorkCount.objects.get(id= work_count_id)
+    if work_count is not None:
+        work_count.delete()
+        messages.warning(request,'Your Work Count Data is deleted')
+        return redirect('work_count_list')
+    context = {
+        'data':work_count
+    }
+    return render(request,template_name,context)
