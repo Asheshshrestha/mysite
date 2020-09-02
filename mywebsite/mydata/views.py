@@ -6,8 +6,13 @@ from django.db.models import Q
 from mydata.forms import (UserIntroForm,
                             AboutMyselfForm,
                             SkillsForm,
-                            WorkCountForm)
-from mydata.models import PersonalData,AboutMyself,Skills,WorkCount
+                            WorkCountForm,
+                            EducationForm)
+from mydata.models import (PersonalData,
+                            AboutMyself,
+                            Skills,
+                            WorkCount,
+                            Education)
 from django.contrib import messages
 # Create your views here.
 
@@ -233,5 +238,45 @@ def add_work_count(request):
             return redirect('work_count_list')
     else:
         form = WorkCountForm()
+
+    return render(request,template_name,{'form':form})
+
+
+@login_required
+def education_list(request):
+
+    template_name ='dashboard\pages\workspace\integration\education\education_setting_page.html'
+    education_obj = Education.objects.all()
+    query = request.GET.get("q")
+    if query:
+        education_obj = education_obj.filter(
+            Q(institute_name__icontains = query ) |
+            Q(level__icontains = query) |
+            Q(institute_location__icontains = query)
+        ).distinct()
+    paginator = Paginator(education_obj,6)
+    page = request.GET.get("page")
+    educations = paginator.get_page(page)
+    context = {
+        'users':educations
+    }
+    return render(request,template_name,context)
+
+
+
+@login_required
+def update_education(request,education_id):
+
+    template_name = 'dashboard\pages\workspace\integration\education\education_update.html'
+    education = Education.objects.get(id = education_id)
+    form = EducationForm(instance=education)
+    if request.method == 'POST':
+        form = EducationForm(data=request.POST,instance=education)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your Education data is updated')
+            return redirect('education_list')
+    else:
+        form = EducationForm(instance=education)
 
     return render(request,template_name,{'form':form})

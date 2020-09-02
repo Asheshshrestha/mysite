@@ -1,6 +1,10 @@
 
 from django import forms
-from mydata.models import PersonalData,AboutMyself,WorkCount,Skills
+from mydata.models import (PersonalData
+                            ,AboutMyself,
+                            WorkCount,
+                            Skills,
+                            Education)
 
 class UserIntroForm(forms.ModelForm):
     
@@ -55,3 +59,10 @@ class WorkCountForm(forms.ModelForm):
     class Meta:
         model = WorkCount
         fields = '__all__'
+
+
+class EducationForm(forms.ModelForm):
+
+    class Meta:
+         model = Education
+         fields = '__all__'
