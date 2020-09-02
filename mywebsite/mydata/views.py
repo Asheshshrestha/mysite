@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.db.models import Q
 from mydata.forms import UserIntroForm,AboutMyselfForm,SkillsForm
-from mydata.models import PersonalData,AboutMyself,Skills
+from mydata.models import PersonalData,AboutMyself,Skills,WorkCount
 from django.contrib import messages
 # Create your views here.
 
@@ -154,4 +154,21 @@ def add_skill(request):
         
 
     
+@login_required
+def work_count_list(request):
 
+    template_name ='dashboard\pages\workspace\integration\work_count\work_count_list.html'
+    work_count_obj = WorkCount.objects.all()
+    query = request.GET.get("q")
+    if query:
+        work_count_obj = work_count_obj.filter(
+            Q(skill_name__icontains = query ) |
+            Q(percentage__icontains = query) 
+        ).distinct()
+    paginator = Paginator(work_count_obj,6)
+    page = request.GET.get("page")
+    work_counts = paginator.get_page(page)
+    context = {
+        'users':work_counts
+    }
+    return render(request,template_name,context)
