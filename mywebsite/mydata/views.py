@@ -305,3 +305,19 @@ def delete_education_confirm(request,education_id):
         'data':education
     }
     return render(request,template_name,context)
+
+@login_required
+def add_education(request):
+    template_name = 'dashboard\pages\workspace\integration\education\\add_education.html'
+
+    form = EducationForm()
+    if request.method == 'POST':
+        form = EducationForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your new Education data is added')
+            return redirect('education_list')
+    else:
+        form = EducationForm()
+
+    return render(request,template_name,{'form':form})

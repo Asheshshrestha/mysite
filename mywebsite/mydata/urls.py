@@ -17,7 +17,8 @@ from mydata.views import (dashboard_index,
                             education_list,
                             update_education,
                             delete_education,
-                            delete_education_confirm
+                            delete_education_confirm,
+                            add_education
                             )
 
 urlpatterns = [
@@ -34,6 +35,7 @@ urlpatterns = [
     path('settings/workspace/integration/about-yourself/work-counts/update/<int:work_count_id>/',update_work_count,name='update_work_count'),
     path('settings/workspace/integration/about-yourself/skills/add/',add_skill,name='add_skill'),
     path('settings/workspace/integration/about-yourself/work-count/add/',add_work_count,name='add_work_count'),
+    path('settings/workspace/integration/Education/add/',add_education,name='add_education'),
     path('settings/workspace/integration/about-yourself/skills/delete/<int:skills_id>/',delete_skill,name='delete_skill'),
     path('settings/workspace/integration/Education/delete/<int:education_id>/',delete_education,name='delete_education'),
     path('settings/workspace/integration/about-yourself/work-count/delete/<int:work_count_id>/',delete_work_count,name='delete_work_count'),
