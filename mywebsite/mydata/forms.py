@@ -49,3 +49,9 @@ class SkillsForm(forms.ModelForm):
 
         model = Skills
         fields = '__all__'
+
+class WorkCountForm(forms.ModelForm):
+
+    class Meta:
+        model = WorkCount
+        fields = '__all__'

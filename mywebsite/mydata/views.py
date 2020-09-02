@@ -3,7 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.db.models import Q
-from mydata.forms import UserIntroForm,AboutMyselfForm,SkillsForm
+from mydata.forms import (UserIntroForm,
+                            AboutMyselfForm,
+                            SkillsForm,
+                            WorkCountForm)
 from mydata.models import PersonalData,AboutMyself,Skills,WorkCount
 from django.contrib import messages
 # Create your views here.
@@ -172,3 +175,21 @@ def work_count_list(request):
         'users':work_counts
     }
     return render(request,template_name,context)
+
+
+@login_required
+def update_work_count(request,work_count_id):
+
+    template_name = 'dashboard\pages\workspace\integration\work_count\work_count_update.html'
+    work_count = WorkCount.objects.get(id = work_count_id)
+    form = WorkCountForm(instance=work_count)
+    if request.method == 'POST':
+        form = WorkCountForm(data=request.POST,instance=work_count)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your Skill data is updated')
+            return redirect('skill_list')
+    else:
+        form = WorkCountForm(instance=work_count)
+
+    return render(request,template_name,{'form':form})
