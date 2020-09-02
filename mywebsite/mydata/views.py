@@ -280,3 +280,28 @@ def update_education(request,education_id):
         form = EducationForm(instance=education)
 
     return render(request,template_name,{'form':form})
+
+
+@login_required
+def delete_education(request,education_id):
+
+    template_name = 'dashboard\pages\workspace\integration\education\education_delete.html'
+    education = Education.objects.get(id=education_id)
+    context = {
+        'data':education
+    }
+    return render(request,template_name,context)
+
+@login_required
+def delete_education_confirm(request,education_id):
+
+    template_name = 'dashboard\pages\workspace\integration\education\education_delete.html'
+    education = Education.objects.get(id= education_id)
+    if education is not None:
+        education.delete()
+        messages.warning(request,'Your Education Data is deleted')
+        return redirect('education_list')
+    context = {
+        'data':education
+    }
+    return render(request,template_name,context)
