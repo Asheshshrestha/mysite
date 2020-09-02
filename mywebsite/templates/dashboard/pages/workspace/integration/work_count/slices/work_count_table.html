@@ -2,7 +2,7 @@
   <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">About Yourself > Your Skills</h6>
+              <h6 class="m-0 font-weight-bold text-primary">About Yourself > Your Work Count</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -36,8 +36,8 @@
                     </tr>
                     {% endfor%}
                     <tr>
-                        <td><a type="button" class="btn btn-outline-primary" href="#"><i class="fa fa-plus-circle"></i></a></td>
-                        <td><a type="button" class="btn btn-outline-primary" href="#"><i class="fa fa-plus-circle"></i></a></td>
+                        <td><a type="button" class="btn btn-outline-primary" href="{% url 'add_work_count' %}"><i class="fa fa-plus-circle"></i></a></td>
+                        <td><a type="button" class="btn btn-outline-primary" href="{% url 'add_work_count' %}"><i class="fa fa-plus-circle"></i></a></td>
                     </tr>
                   </tbody>
                 </table>

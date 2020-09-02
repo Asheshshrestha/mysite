@@ -219,3 +219,19 @@ def delete_work_count_confirm(request,work_count_id):
         'data':work_count
     }
     return render(request,template_name,context)
+
+@login_required
+def add_work_count(request):
+    template_name = 'dashboard\pages\workspace\integration\work_count\\add_work_count.html'
+
+    form = WorkCountForm()
+    if request.method == 'POST':
+        form = WorkCountForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your new Work Count is added')
+            return redirect('work_count_list')
+    else:
+        form = WorkCountForm()
+
+    return render(request,template_name,{'form':form})
