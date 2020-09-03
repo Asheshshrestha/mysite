@@ -1,0 +1,17 @@
+ {% load static %} {% load crispy_forms_tags %}
+<!-- DataTales Example -->
+<div class="card shadow mb-4 col-12">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Your Experience > Delete Experience</h6>
+    </div>
+    <div class="card-body">
+    <h3> Do you really want to delete your Experience Data?</h3>
+    <br>
+    <h4>Job Title: {{ data.job_title|capfirst }}</h4>
+    <h4>Employee Type: {{ data.employee_type }}</h4>
+    <h4>Company Name: {{ data.company_name }}</h4>
+    <br>
+    <a  class="btn btn-danger mr-5" href="{% url 'delete_experience_confirm' exp_id=data.id %}">Yes,Delete</a>
+    <a  class="btn btn-primary" href="{% url 'experience_list' %}">Cancel</a>
+</div>
+</div>

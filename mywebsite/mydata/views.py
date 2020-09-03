@@ -363,3 +363,29 @@ def update_experience(request,exp_id):
         form = ExperienceForm(instance=exp)
 
     return render(request,template_name,{'form':form})
+
+
+
+@login_required
+def delete_experience(request,exp_id):
+
+    template_name = 'dashboard\pages\workspace\integration\experience\experience_delete.html'
+    exp = Experience.objects.get(id=exp_id)
+    context = {
+        'data':exp
+    }
+    return render(request,template_name,context)
+
+@login_required
+def delete_experience_confirm(request,exp_id):
+
+    template_name = 'dashboard\pages\workspace\integration\experience\experience_delete.html'
+    exp = Experience.objects.get(id= exp_id)
+    if exp is not None:
+        exp.delete()
+        messages.warning(request,'Your Experience Data is deleted')
+        return redirect('experience_list')
+    context = {
+        'data':exp
+    }
+    return render(request,template_name,context)

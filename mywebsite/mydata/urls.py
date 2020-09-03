@@ -20,7 +20,9 @@ from mydata.views import (dashboard_index,
                             delete_education_confirm,
                             add_education,
                             experience_list,
-                            update_experience
+                            update_experience,
+                            delete_experience,
+                            delete_experience_confirm
                             )
 
 urlpatterns = [
@@ -42,8 +44,10 @@ urlpatterns = [
     path('settings/workspace/integration/Education/add/',add_education,name='add_education'),
     path('settings/workspace/integration/about-yourself/skills/delete/<int:skills_id>/',delete_skill,name='delete_skill'),
     path('settings/workspace/integration/Education/delete/<int:education_id>/',delete_education,name='delete_education'),
+    path('settings/workspace/integration/Experience/delete/<int:exp_id>/',delete_experience,name='delete_experience'),
     path('settings/workspace/integration/about-yourself/work-count/delete/<int:work_count_id>/',delete_work_count,name='delete_work_count'),
     path('settings/workspace/integration/about-yourself/skills/delete_confirm/<int:skills_id>/',delete_skill_confirm,name='delete_skill_confirm'),
     path('settings/workspace/integration/about-yourself/work-count/delete_confirm/<int:work_count_id>/',delete_work_count_confirm,name='delete_work_count_confirm'),
     path('settings/workspace/integration/Education/delete_confirm/<int:education_id>/',delete_education_confirm,name='delete_education_confirm'),
+    path('settings/workspace/integration/Experience/delete_confirm/<int:exp_id>/',delete_experience_confirm,name='delete_experience_confirm'),
 ]
