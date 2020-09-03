@@ -19,7 +19,8 @@ from mydata.views import (dashboard_index,
                             delete_education,
                             delete_education_confirm,
                             add_education,
-                            experience_list
+                            experience_list,
+                            update_experience
                             )
 
 urlpatterns = [
@@ -34,6 +35,7 @@ urlpatterns = [
     path('settings/workspace/integration/Experience/',experience_list,name='experience_list'),
     path('settings/workspace/integration/about-yourself/skills/update/<int:skills_no>/',update_skill,name='update_skill'),
     path('settings/workspace/integration/Education/<int:education_id>/',update_education,name='update_education'),
+    path('settings/workspace/integration/Experience/<int:exp_id>/',update_experience,name='update_experience'),
     path('settings/workspace/integration/about-yourself/work-counts/update/<int:work_count_id>/',update_work_count,name='update_work_count'),
     path('settings/workspace/integration/about-yourself/skills/add/',add_skill,name='add_skill'),
     path('settings/workspace/integration/about-yourself/work-count/add/',add_work_count,name='add_work_count'),

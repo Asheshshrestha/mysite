@@ -7,13 +7,15 @@ from mydata.forms import (UserIntroForm,
                             AboutMyselfForm,
                             SkillsForm,
                             WorkCountForm,
-                            EducationForm)
+                            EducationForm,
+                            ExperienceForm)
 from mydata.models import (PersonalData,
                             AboutMyself,
                             Skills,
                             WorkCount,
                             Education,
-                            Experience)
+                            Experience,
+                            )
 from django.contrib import messages
 # Create your views here.
 
@@ -343,3 +345,21 @@ def experience_list(request):
         'users':exp
     }
     return render(request,template_name,context)
+
+
+@login_required
+def update_experience(request,exp_id):
+
+    template_name = 'dashboard\pages\workspace\integration\experience\experience_update.html'
+    exp = Experience.objects.get(id = exp_id)
+    form = ExperienceForm(instance=exp)
+    if request.method == 'POST':
+        form = ExperienceForm(data=request.POST,instance=exp)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your Experience data is updated')
+            return redirect('experience_list')
+    else:
+        form = ExperienceForm(instance=exp)
+
+    return render(request,template_name,{'form':form})

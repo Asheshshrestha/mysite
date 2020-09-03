@@ -4,7 +4,8 @@ from mydata.models import (PersonalData
                             ,AboutMyself,
                             WorkCount,
                             Skills,
-                            Education)
+                            Education,
+                            Experience)
 
 class UserIntroForm(forms.ModelForm):
     
@@ -66,3 +67,10 @@ class EducationForm(forms.ModelForm):
     class Meta:
          model = Education
          fields = '__all__'
+
+class ExperienceForm(forms.ModelForm):
+
+    class Meta:
+        
+        model = Experience
+        fields = '__all__'
