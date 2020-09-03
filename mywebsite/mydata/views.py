@@ -420,7 +420,7 @@ def testimonial_setting(request):
         if form.is_valid():
             form.save()
             messages.success(request,'Your Testimonials data is updated')
-            return redirect('testimonials')
+            return redirect('testimonial_setting')
     else:
         form = TestimonialsForm(instance=data)
 
@@ -493,7 +493,7 @@ def delete_testimonial_confirm(request,tes_id):
 
 @login_required
 def add_testimonial(request):
-    template_name = ''
+    template_name = 'dashboard\pages\workspace\integration\\testimonials\\add_testimonial.html'
 
     form = TestimonialMessageForm()
     if request.method == 'POST':
