@@ -12,7 +12,8 @@ from mydata.models import (PersonalData,
                             AboutMyself,
                             Skills,
                             WorkCount,
-                            Education)
+                            Education,
+                            Experience)
 from django.contrib import messages
 # Create your views here.
 
@@ -321,3 +322,24 @@ def add_education(request):
         form = EducationForm()
 
     return render(request,template_name,{'form':form})
+
+@login_required
+def experience_list(request):
+
+    template_name ='dashboard\pages\workspace\integration\experience\experience_list.html'
+    exp_obj = Experience.objects.all()
+    query = request.GET.get("q")
+    if query:
+        exp_obj = exp_obj.filter(
+            Q(job_title__icontains = query ) |
+            Q(employee_type__icontains = query) |
+            Q(company_name__icontains = query) |
+            Q(company_location__icontains = query)
+        ).distinct()
+    paginator = Paginator(exp_obj,6)
+    page = request.GET.get("page")
+    exp = paginator.get_page(page)
+    context = {
+        'users':exp
+    }
+    return render(request,template_name,context)
