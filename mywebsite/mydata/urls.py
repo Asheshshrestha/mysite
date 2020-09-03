@@ -23,7 +23,8 @@ from mydata.views import (dashboard_index,
                             update_experience,
                             delete_experience,
                             delete_experience_confirm,
-                            add_experience
+                            add_experience,
+                            testimonial_setting
                             )
 
 urlpatterns = [
@@ -31,6 +32,7 @@ urlpatterns = [
     path('settings/workspace/members/',members,name='members'),
     path('settings/workspace/general_setting/',general_setting,name='general_setting'),
     path('settings/workspace/integration/personal-info/',personal_info_setting,name='personal_info'),
+    path('settings/workspace/integration/testimonials/',testimonial_setting,name='testimonial_setting'),
     path('settings/workspace/integration/about-yourself/',about_yourself_setting,name='about_yourself'),
     path('settings/workspace/integration/about-yourself/skills',skills_list,name='skill_list'),
     path('settings/workspace/integration/about-yourself/work-counts',work_count_list,name='work_count_list'),

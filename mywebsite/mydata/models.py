@@ -112,6 +112,9 @@ class TestimonialMessage(models.Model):
     name = models.CharField(max_length=50,null=True)
     stars = models.CharField(max_length=1,choices=star_choice)
 
+    def __str__(self):
+        return self.name
+
 class Testimonials(models.Model):
 
     sub_desc = models.CharField(max_length=500,null=True)

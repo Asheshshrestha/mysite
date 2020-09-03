@@ -8,13 +8,15 @@ from mydata.forms import (UserIntroForm,
                             SkillsForm,
                             WorkCountForm,
                             EducationForm,
-                            ExperienceForm)
+                            ExperienceForm,
+                            TestimonialsForm)
 from mydata.models import (PersonalData,
                             AboutMyself,
                             Skills,
                             WorkCount,
                             Education,
                             Experience,
+                            Testimonials
                             )
 from django.contrib import messages
 # Create your views here.
@@ -406,3 +408,20 @@ def add_experience(request):
         form = ExperienceForm()
 
     return render(request,template_name,{'form':form})
+
+
+@login_required
+def testimonial_setting(request):
+    
+    data = Testimonials.objects.first()
+    template_name = 'dashboard\pages\workspace\integration\\testimonials_setting_page.html'
+    if request.method == 'POST':
+        form = TestimonialsForm(data = request.POST,instance=data)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your Testimonials data is updated')
+            return redirect('testimonials')
+    else:
+        form = TestimonialsForm(instance=data)
+
+    return render(request,template_name,{'form':form,'data':data})

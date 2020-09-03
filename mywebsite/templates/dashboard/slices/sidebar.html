@@ -1,107 +1,117 @@
 {% load static %}
 <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'dashboard_index'%}">
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'dashboard_index'%}">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+            <i class="fas fa-laugh-wink"></i>
         </div>
         <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
-      </a>
+    </a>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
 
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
         <a class="nav-link" href="{% url 'dashboard_index'%}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider">
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-      <!-- Heading -->
-      <div class="sidebar-heading">
+    <!-- Heading -->
+    <div class="sidebar-heading">
         Workspace
-      </div>
+    </div>
 
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
         <a class="nav-link" href="{% url 'general_setting' %}">
-          <i class="fas fa-fw fa-align-justify"></i>
-          <span>General</span></a>
-      </li>
+            <i class="fas fa-fw fa-align-justify"></i>
+            <span>General</span></a>
+    </li>
 
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
         <a class="nav-link" href="{% url 'members'%}">
-          <i class="fas fa-fw fa-users"></i>
-          <span>Member</span></a>
-      </li>
+            <i class="fas fa-fw fa-users"></i>
+            <span>Member</span></a>
+    </li>
 
-         <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Integration</span>
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Integration</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="{% url 'personal_info'%}">Personal Info</a>
-            <div  class="btn-group" role="group" >
-            <a class="collapse-item" href="{% url 'about_yourself'%}">About Yourself</a>
-            <div class="btn-group" role="group">
-                  <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom Components:</h6>
+                <a class="collapse-item" href="{% url 'personal_info'%}">Personal Info</a>
+                <div class="btn-group" role="group">
+                    <a class="collapse-item" href="{% url 'about_yourself'%}">About Yourself</a>
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     
                   </button>
-                  <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="{% url 'work_count_list' %}">Work Count</a>
-                    <a class="dropdown-item" href="{% url 'skill_list'%}">Skills</a>
-                  </div>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <a class="dropdown-item" href="{% url 'work_count_list' %}">Work Count</a>
+                            <a class="dropdown-item" href="{% url 'skill_list'%}">Skills</a>
+                        </div>
+                    </div>
                 </div>
+                <a class="collapse-item" href="{% url 'education_list'%}">Education</a>
+                <a class="collapse-item" href="{% url 'experience_list'%}">Experience</a>
+                <div class="btn-group" role="group">
+                <a class="collapse-item" href="{% url 'testimonial_setting'%}">Testimonials</a>
+                 <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    
+                  </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <a class="dropdown-item" href="{% url 'work_count_list' %}">Testimonial Message</a>
+                        </div>
+                    </div>
+                </div>
+                <a class="collapse-item" href="{% url 'personal_info'%}">My Offers</a>
+
             </div>
-            <a class="collapse-item" href="{% url 'education_list'%}">Education</a>
-            <a class="collapse-item" href="{% url 'experience_list'%}">Experience</a>
-            <a class="collapse-item" href="{% url 'personal_info'%}">Testimonials</a>
-            <a class="collapse-item" href="{% url 'personal_info'%}">My Offers</a>
-            
-          </div>
         </div>
-      </li>
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
 
-      
-      <!-- Heading -->
-      <div class="sidebar-heading">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
         Personal
-      </div>
-          <!-- Nav Item - Charts -->
-      <li class="nav-item">
+    </div>
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
         <a class="nav-link" href="{% url 'user_update'%}">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Account</span></a>
-      </li>
+            <i class="fas fa-fw fa-user"></i>
+            <span>Account</span></a>
+    </li>
 
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
         <a class="nav-link" href="{% url 'change_password'%}">
-          <i class="fas fa-fw fa-user-shield"></i>
-          <span>Security</span></a>
-      </li>
+            <i class="fas fa-fw fa-user-shield"></i>
+            <span>Security</span></a>
+    </li>
 
 
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
 
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
+    </div>
 
-    </ul>
-    <!-- End of Sidebar -->
+</ul>
+<!-- End of Sidebar -->

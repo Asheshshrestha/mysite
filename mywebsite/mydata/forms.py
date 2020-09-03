@@ -5,7 +5,9 @@ from mydata.models import (PersonalData
                             WorkCount,
                             Skills,
                             Education,
-                            Experience)
+                            Experience,
+                            TestimonialMessage,
+                            Testimonials)
 
 class UserIntroForm(forms.ModelForm):
     
@@ -47,6 +49,20 @@ class AboutMyselfForm(forms.ModelForm):
             "Skills":"Your Skills"
         }
         fields = ('short_desc','work_count','Skills')
+
+class TestimonialsForm(forms.ModelForm):
+    
+    testimonials = forms.ModelMultipleChoiceField(
+        queryset=TestimonialMessage.objects,
+        widget= forms.CheckboxSelectMultiple
+    )
+    class Meta:
+        model = Testimonials
+        widgets = {'sub_desc':forms.Textarea()}
+        labels = {
+            'sub_desc' : " Short Descriptions"
+        }
+        fields = '__all__'
 
 class SkillsForm(forms.ModelForm):
 
