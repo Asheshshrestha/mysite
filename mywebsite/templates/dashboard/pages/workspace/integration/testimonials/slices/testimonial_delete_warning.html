@@ -1,0 +1,17 @@
+ {% load static %} {% load crispy_forms_tags %}
+<!-- DataTales Example -->
+<div class="card shadow mb-4 col-12">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Testimonails > Testimonial Message > Delete Testimonials</h6>
+    </div>
+    <div class="card-body">
+    <h3> Do you really want to delete your Testimonails?</h3>
+    <br>
+    <h4> Provider Name: {{ data.name|capfirst }}</h4>
+    <h4> Message: {{ data.message }} </h4>
+    <h4> Stars: {{ data.stars }} </h4>
+    <br>
+    <a  class="btn btn-danger mr-5" href="{% url 'delete_testimonial_confirm' tes_id=data.id %}">Yes,Delete</a>
+    <a  class="btn btn-primary" href="{% url 'testimonial_list' %}">Cancel</a>
+</div>
+</div>

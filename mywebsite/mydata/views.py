@@ -470,7 +470,7 @@ def update_testimonial(request,tes_id):
 @login_required
 def delete_testimonial(request,tes_id):
 
-    template_name = ''
+    template_name = 'dashboard\pages\workspace\integration\\testimonials\\testimonial_delete.html'
     education = TestimonialMessage.objects.get(id=tes_id)
     context = {
         'data':education
@@ -480,7 +480,7 @@ def delete_testimonial(request,tes_id):
 @login_required
 def delete_testimonial_confirm(request,tes_id):
 
-    template_name = ''
+    template_name = 'dashboard\pages\workspace\integration\\testimonials\\testimonial_delete.html'
     education = TestimonialMessage.objects.get(id= tes_id)
     if education is not None:
         education.delete()
