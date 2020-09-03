@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.db.models import Q
-from mydata.forms import (UserIntroForm,
+from mydata.forms import (TestimonialMessageForm, UserIntroForm,
                             AboutMyselfForm,
                             SkillsForm,
                             WorkCountForm,
@@ -12,7 +12,7 @@ from mydata.forms import (UserIntroForm,
                             TestimonialsForm)
 from mydata.models import (PersonalData,
                             AboutMyself,
-                            Skills,
+                            Skills, TestimonialMessage,
                             WorkCount,
                             Education,
                             Experience,
@@ -425,3 +425,84 @@ def testimonial_setting(request):
         form = TestimonialsForm(instance=data)
 
     return render(request,template_name,{'form':form,'data':data})
+
+
+
+@login_required
+def testimonial_list(request):
+
+    template_name ='dashboard\pages\workspace\integration\\testimonials\\testimonials_list.html'
+    testimonial_obj = TestimonialMessage.objects.all()
+    query = request.GET.get("q")
+    if query:
+        testimonial_obj = testimonial_obj.filter(
+            Q(message__icontains = query ) |
+            Q(name__icontains = query) 
+        ).distinct()
+    paginator = Paginator(testimonial_obj,6)
+    page = request.GET.get("page")
+    testimonial = paginator.get_page(page)
+    context = {
+        'users':testimonial
+    }
+    return render(request,template_name,context)
+
+
+
+@login_required
+def update_testimonial(request,education_id):
+
+    template_name = ''
+    education = TestimonialMessage.objects.get(id = education_id)
+    form = TestimonialMessageForm(instance=education)
+    if request.method == 'POST':
+        form = EducationForm(data=request.POST,instance=education)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your Testimonial data is updated')
+            return redirect('testimonial_list')
+    else:
+        form = EducationForm(instance=education)
+
+    return render(request,template_name,{'form':form})
+
+
+@login_required
+def delete_testimonial(request,education_id):
+
+    template_name = ''
+    education = TestimonialMessage.objects.get(id=education_id)
+    context = {
+        'data':education
+    }
+    return render(request,template_name,context)
+
+@login_required
+def delete_testimonial_confirm(request,education_id):
+
+    template_name = ''
+    education = TestimonialMessage.objects.get(id= education_id)
+    if education is not None:
+        education.delete()
+        messages.warning(request,'Your Tesimonial Data is deleted')
+        return redirect('testimonial_list')
+    context = {
+        'data':education
+    }
+    return render(request,template_name,context)
+
+@login_required
+def add_testimonial(request):
+    template_name = ''
+
+    form = TestimonialMessageForm()
+    if request.method == 'POST':
+        form = TestimonialMessageForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your new Testimonial data is added')
+            return redirect('testimonial_list')
+    else:
+        form = TestimonialMessageForm()
+
+    return render(request,template_name,{'form':form})
