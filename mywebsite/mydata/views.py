@@ -389,3 +389,20 @@ def delete_experience_confirm(request,exp_id):
         'data':exp
     }
     return render(request,template_name,context)
+
+@login_required
+def add_experience(request):
+
+    template_name = 'dashboard\pages\workspace\integration\experience\\add_experience.html'
+
+    form = ExperienceForm()
+    if request.method == 'POST':
+        form = ExperienceForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your new Experience data is added')
+            return redirect('experience_list')
+    else:
+        form = ExperienceForm()
+
+    return render(request,template_name,{'form':form})

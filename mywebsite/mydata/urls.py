@@ -22,7 +22,8 @@ from mydata.views import (dashboard_index,
                             experience_list,
                             update_experience,
                             delete_experience,
-                            delete_experience_confirm
+                            delete_experience_confirm,
+                            add_experience
                             )
 
 urlpatterns = [
@@ -40,6 +41,7 @@ urlpatterns = [
     path('settings/workspace/integration/Experience/<int:exp_id>/',update_experience,name='update_experience'),
     path('settings/workspace/integration/about-yourself/work-counts/update/<int:work_count_id>/',update_work_count,name='update_work_count'),
     path('settings/workspace/integration/about-yourself/skills/add/',add_skill,name='add_skill'),
+    path('settings/workspace/integration/Experience/add/',add_experience,name='add_experience'),
     path('settings/workspace/integration/about-yourself/work-count/add/',add_work_count,name='add_work_count'),
     path('settings/workspace/integration/Education/add/',add_education,name='add_education'),
     path('settings/workspace/integration/about-yourself/skills/delete/<int:skills_id>/',delete_skill,name='delete_skill'),
