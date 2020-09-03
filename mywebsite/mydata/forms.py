@@ -65,9 +65,11 @@ class TestimonialsForm(forms.ModelForm):
         fields = '__all__'
 
 class TestimonialMessageForm(forms.ModelForm):
+    
 
      class Meta:
          model = TestimonialMessage
+         widgets = {'message':forms.Textarea()}
          fields = '__all__'
 
 

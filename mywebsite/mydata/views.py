@@ -450,38 +450,38 @@ def testimonial_list(request):
 
 
 @login_required
-def update_testimonial(request,education_id):
+def update_testimonial(request,tes_id):
 
-    template_name = ''
-    education = TestimonialMessage.objects.get(id = education_id)
+    template_name = 'dashboard\pages\workspace\integration\\testimonials\\testimonial_update.html'
+    education = TestimonialMessage.objects.get(id = tes_id)
     form = TestimonialMessageForm(instance=education)
     if request.method == 'POST':
-        form = EducationForm(data=request.POST,instance=education)
+        form = TestimonialMessageForm(data=request.POST,instance=education)
         if form.is_valid():
             form.save()
             messages.success(request,'Your Testimonial data is updated')
             return redirect('testimonial_list')
     else:
-        form = EducationForm(instance=education)
+        form = TestimonialMessageForm(instance=education)
 
     return render(request,template_name,{'form':form})
 
 
 @login_required
-def delete_testimonial(request,education_id):
+def delete_testimonial(request,tes_id):
 
     template_name = ''
-    education = TestimonialMessage.objects.get(id=education_id)
+    education = TestimonialMessage.objects.get(id=tes_id)
     context = {
         'data':education
     }
     return render(request,template_name,context)
 
 @login_required
-def delete_testimonial_confirm(request,education_id):
+def delete_testimonial_confirm(request,tes_id):
 
     template_name = ''
-    education = TestimonialMessage.objects.get(id= education_id)
+    education = TestimonialMessage.objects.get(id= tes_id)
     if education is not None:
         education.delete()
         messages.warning(request,'Your Tesimonial Data is deleted')

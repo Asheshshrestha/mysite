@@ -2,7 +2,7 @@
   <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">About Yourself > Your Work Count</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Testimonial > Testimonial Message</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -30,7 +30,7 @@
                       <td>{{ user.stars }}</td>
                       <td><p style="width: 800px;">{{ user.message }}</p></button></td>
                       <td>
-                        <a type="button" class="btn btn-outline-primary" href="{% url 'update_work_count' work_count_id=user.id %}"><i class="far fa-edit"></i></a>
+                        <a type="button" class="btn btn-outline-primary" href="{% url 'update_testimonial' tes_id=user.id %}"><i class="far fa-edit"></i></a>
                         <a type="button" class="btn btn-outline-danger" href="{% url 'delete_work_count' work_count_id=user.id %}"><i class="far fa-trash-alt"></i></a>
                       </td>
                     </tr>
