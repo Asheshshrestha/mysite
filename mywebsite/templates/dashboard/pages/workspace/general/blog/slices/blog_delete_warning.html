@@ -1,0 +1,15 @@
+ {% load static %} {% load crispy_forms_tags %}
+<!-- DataTales Example -->
+<div class="card shadow mb-4 col-12">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Blogs > Your Blogs > Delete Blogs</h6>
+    </div>
+    <div class="card-body">
+    <h3> Do you really want to delete your blog?</h3>
+    <br>
+    <h4>Blog Title: {{ data.title|capfirst }}</h4>
+    <br>
+    <a  class="btn btn-danger mr-5" href="{% url 'delete_blog_confirm' blog_id=data.id %}">Yes,Delete</a>
+    <a  class="btn btn-primary" href="{% url 'blog_list' %}">Cancel</a>
+</div>
+</div>

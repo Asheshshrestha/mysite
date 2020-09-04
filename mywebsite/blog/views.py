@@ -19,7 +19,7 @@ def add_blog(request):
         if form.is_valid():
             form.save()
             messages.success(request,'Your new  blog is added')
-            return redirect('myoffer_list')
+            return redirect('blog_list')
     else:
         form = BlogForm()
 
@@ -60,3 +60,27 @@ def update_blog(request,blog_id):
         form = BlogForm(instance=blog)
 
     return render(request,template_name,{'form':form})
+
+@login_required
+def delete_blog(request,blog_id):
+
+    template_name = 'dashboard\pages\workspace\general\\blog\\blog_delete.html'
+    blog = BlogModel.objects.get(id=blog_id)
+    context = {
+        'data':blog
+    }
+    return render(request,template_name,context)
+
+@login_required
+def delete_blog_confirm(request,blog_id):
+
+    template_name = 'dashboard\pages\workspace\general\\blog\\blog_delete.html'
+    blog = BlogModel.objects.get(id= blog_id)
+    if blog is not None:
+        blog.delete()
+        messages.warning(request,'Your Blog is deleted')
+        return redirect('blog_list')
+    context = {
+        'data':blog
+    }
+    return render(request,template_name,context)
