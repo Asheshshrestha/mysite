@@ -523,7 +523,7 @@ def myoffer_setting(request):
 @login_required
 def myoffer_list(request):
 
-    template_name =''
+    template_name ='dashboard\pages\workspace\integration\offers\offer_list.html'
     offer_obj = Offers.objects.all()
     query = request.GET.get("q")
     if query:
