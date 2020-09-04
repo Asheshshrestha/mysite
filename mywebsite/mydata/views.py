@@ -506,7 +506,7 @@ def add_testimonial(request):
 def myoffer_setting(request):
     
     data = OfferToClient.objects.first()
-    template_name = ''
+    template_name = 'dashboard\pages\workspace\integration\offer_setting_page.html'
     if request.method == 'POST':
         form = OfferToClientForm(data = request.POST,instance=data)
         if form.is_valid():
@@ -542,59 +542,59 @@ def myoffer_list(request):
 
 
 @login_required
-def update_myoffer(request,tes_id):
+def update_myoffer(request,offer_id):
 
-    template_name = 'dashboard\pages\workspace\integration\\testimonials\\testimonial_update.html'
-    education = TestimonialMessage.objects.get(id = tes_id)
-    form = TestimonialMessageForm(instance=education)
+    template_name = ''
+    offer = Offers.objects.get(id = offer_id)
+    form = OffersForm(instance=offer)
     if request.method == 'POST':
-        form = TestimonialMessageForm(data=request.POST,instance=education)
+        form = OffersForm(data=request.POST,instance=offer)
         if form.is_valid():
             form.save()
-            messages.success(request,'Your Testimonial data is updated')
-            return redirect('testimonial_list')
+            messages.success(request,'Your data is updated')
+            return redirect('myoffer_list')
     else:
-        form = TestimonialMessageForm(instance=education)
+        form = OffersForm(instance=offer)
 
     return render(request,template_name,{'form':form})
 
 
 @login_required
-def delete_myoffer(request,tes_id):
+def delete_myoffer(request,offer_id):
 
-    template_name = 'dashboard\pages\workspace\integration\\testimonials\\testimonial_delete.html'
-    education = TestimonialMessage.objects.get(id=tes_id)
+    template_name = ''
+    offer = Offers.objects.get(id=offer_id)
     context = {
-        'data':education
+        'data':offer
     }
     return render(request,template_name,context)
 
 @login_required
-def delete_myoffer_confirm(request,tes_id):
+def delete_myoffer_confirm(request,offer_id):
 
-    template_name = 'dashboard\pages\workspace\integration\\testimonials\\testimonial_delete.html'
-    education = TestimonialMessage.objects.get(id= tes_id)
-    if education is not None:
-        education.delete()
-        messages.warning(request,'Your Tesimonial Data is deleted')
-        return redirect('testimonial_list')
+    template_name = ''
+    offer = Offers.objects.get(id= offer_id)
+    if offer is not None:
+        offer.delete()
+        messages.warning(request,'Your Data is deleted')
+        return redirect('myoffer_list')
     context = {
-        'data':education
+        'data':offer
     }
     return render(request,template_name,context)
 
 @login_required
 def add_myoffer(request):
-    template_name = 'dashboard\pages\workspace\integration\\testimonials\\add_testimonial.html'
+    template_name = ''
 
-    form = TestimonialMessageForm()
+    form = OffersForm()
     if request.method == 'POST':
-        form = TestimonialMessageForm(data=request.POST)
+        form = OffersForm(data=request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request,'Your new Testimonial data is added')
-            return redirect('testimonial_list')
+            messages.success(request,'Your new  data is added')
+            return redirect('myoffer_list')
     else:
-        form = TestimonialMessageForm()
+        form = OffersForm()
 
     return render(request,template_name,{'form':form})

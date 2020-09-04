@@ -77,7 +77,17 @@
                         </div>
                     </div>
                 </div>
-                <a class="collapse-item" href="{% url 'personal_info'%}">My Offers</a>
+                <div class="btn-group" role="group">
+                <a class="collapse-item" href="{% url 'myoffer_setting'%}">My Offers</a>
+                <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    
+                  </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <a class="dropdown-item" href="{% url 'testimonial_list' %}">Testimonial Message</a>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>

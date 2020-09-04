@@ -99,6 +99,9 @@ class Offers(models.Model):
     title = models.CharField(max_length=100,null=True)
     short_desc = models.CharField(max_length=500,null=True)
 
+    def __str__(self):
+        return self.title
+
 class OfferToClient(models.Model):
 
     heading = models.CharField(max_length=100,null=True)
