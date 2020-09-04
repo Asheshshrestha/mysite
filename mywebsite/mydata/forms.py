@@ -7,7 +7,9 @@ from mydata.models import (PersonalData
                             Education,
                             Experience,
                             TestimonialMessage,
-                            Testimonials)
+                            Testimonials,
+                            Offers,
+                            OfferToClient)
 
 class UserIntroForm(forms.ModelForm):
     
@@ -72,6 +74,30 @@ class TestimonialMessageForm(forms.ModelForm):
          widgets = {'message':forms.Textarea()}
          fields = '__all__'
 
+class OfferToClientForm(forms.ModelForm):
+
+    offers = forms.ModelMultipleChoiceField(
+        queryset= Offers.objects,
+        widget = forms.CheckboxSelectMultiple
+    )
+    class Meta:
+
+        model = OfferToClient
+        widgets = {'sub_desc':forms.Textarea()}
+        labels = {
+            'short_desc':"Short Descriptions"
+        }
+        fields = '__all__'
+
+class OffersForm(forms.ModelForm):
+
+    class Meta:
+        model = Offers
+        widgets = {'short_desc':forms.Textarea()}
+        labels = {
+            'short_desc':"Short Descriptions"
+        }
+        fields = '__all__'
 
 class SkillsForm(forms.ModelForm):
 
