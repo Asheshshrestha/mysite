@@ -34,7 +34,8 @@ from mydata.views import (dashboard_index,
                             myoffer_list,
                             update_myoffer,
                             delete_myoffer,
-                            delete_myoffer_confirm
+                            delete_myoffer_confirm,
+                            add_myoffer
                             )
 
 urlpatterns = [
@@ -57,6 +58,7 @@ urlpatterns = [
     path('settings/workspace/integration/testimonials/<int:tes_id>/',update_testimonial,name='update_testimonial'),
     path('settings/workspace/integration/My-Offer/offer/<int:offer_id>/',update_myoffer,name='update_myoffer'),
     path('settings/workspace/integration/about-yourself/work-counts/update/<int:work_count_id>/',update_work_count,name='update_work_count'),
+    path('settings/workspace/integration/My-Offer/offer/add/',add_myoffer,name='add_myoffer'),
     path('settings/workspace/integration/about-yourself/skills/add/',add_skill,name='add_skill'),
     path('settings/workspace/integration/Experience/add/',add_experience,name='add_experience'),
     path('settings/workspace/integration/testimonials/add/',add_testimonial,name='add_testimonial'),

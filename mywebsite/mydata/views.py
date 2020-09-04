@@ -585,7 +585,7 @@ def delete_myoffer_confirm(request,offer_id):
 
 @login_required
 def add_myoffer(request):
-    template_name = ''
+    template_name = 'dashboard\pages\workspace\integration\offers\\add_offer.html'
 
     form = OffersForm()
     if request.method == 'POST':
