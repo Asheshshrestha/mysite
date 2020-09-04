@@ -20,5 +20,6 @@ from mysite.views import aboutus,contactus,services
 urlpatterns = [
    path('about/',aboutus,name="aboutus"),
    path('contact/',contactus,name="contactus"),
-   path('services/',services,name="services")
+   path('services/',services,name="services"),
+   path('blog/',include('blog.urls'))
 ]

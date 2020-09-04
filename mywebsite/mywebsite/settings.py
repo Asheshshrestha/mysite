@@ -44,10 +44,13 @@ INSTALLED_APPS = [
     'project',
     'mydata',
     'accounts',
+    'blog',
 
     #third party
     'faicon',
-    'crispy_forms'
+    'crispy_forms',
+    'ckeditor',
+    'ckeditor_uploader'
 ]
 
 MIDDLEWARE = [
@@ -152,3 +155,22 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT= 587
 EMAIL_USE_TLS=True
 EMAIL_HOST_PASSWORD= os.getenv("PASSWORD")
+
+SITE_ID = 1
+
+####################################
+    ##  CKEDITOR CONFIGURATION ##
+####################################
+
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+    },
+}
+
+###################################

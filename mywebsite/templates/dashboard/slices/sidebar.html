@@ -30,9 +30,20 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'general_setting' %}">
-            <i class="fas fa-fw fa-align-justify"></i>
-            <span>General</span></a>
+              <a class="nav-link collapsed" href="{% url 'general_setting' %}" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>General</span>
+        </a>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">General Components:</h6>
+               
+                <a class="collapse-item" href="{% url 'add_blog' %}">Blogs</a>
+                <a class="collapse-item" href="">Projects</a>
+                
+
+            </div>
+        </div>
     </li>
 
     <!-- Nav Item - Tables -->
