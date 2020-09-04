@@ -42,3 +42,21 @@ def blog_list(request):
         'users':blog
     }
     return render(request,template_name,context)
+
+
+@login_required
+def update_blog(request,blog_id):
+
+    template_name = 'dashboard\pages\workspace\general\\blog\\blog_update.html'
+    blog = BlogModel.objects.get(id = blog_id)
+    form = BlogForm(instance=blog)
+    if request.method == 'POST':
+        form = BlogForm(data=request.POST,instance=blog)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your blog is updated')
+            return redirect('blog_list')
+    else:
+        form = BlogForm(instance=blog)
+
+    return render(request,template_name,{'form':form})

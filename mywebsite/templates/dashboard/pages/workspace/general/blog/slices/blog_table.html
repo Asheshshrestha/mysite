@@ -27,7 +27,7 @@
                       <td>{{ user.title |capfirst  }}</td>
                       <td>{{ user.pub_date }}</td>
                       <td>
-                        <a type="button" class="btn btn-outline-primary" href="{% url 'update_skill' skills_no=user.id %}"><i class="far fa-edit"></i></a>
+                        <a type="button" class="btn btn-outline-primary" href="{% url 'update_blog' blog_id=user.id %}"><i class="far fa-edit"></i></a>
                         <a type="button" class="btn btn-outline-danger" href="{% url 'delete_skill' skills_id=user.id %}"><i class="far fa-trash-alt"></i></a>
                       </td>
                     </tr>
