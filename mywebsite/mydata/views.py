@@ -544,7 +544,7 @@ def myoffer_list(request):
 @login_required
 def update_myoffer(request,offer_id):
 
-    template_name = ''
+    template_name = 'dashboard\pages\workspace\integration\offers\offer_update.html'
     offer = Offers.objects.get(id = offer_id)
     form = OffersForm(instance=offer)
     if request.method == 'POST':
