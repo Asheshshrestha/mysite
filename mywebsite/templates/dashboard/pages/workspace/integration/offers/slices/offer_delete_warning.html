@@ -1,0 +1,17 @@
+ {% load static %} {% load crispy_forms_tags %}
+<!-- DataTales Example -->
+<div class="card shadow mb-4 col-12">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">My Offers > Offers > Delete Offers</h6>
+    </div>
+    <div class="card-body">
+    <h3> Do you really want to delete your Offers?</h3>
+    <br>
+    <h4>Title: {{ data.title|capfirst }}</h4>
+    <h4>Icon: <button type="button" class="btn btn-outline-primary"><i class="{{ data.icon.style }} fa-{{ data.icon.icon}}"></i></button></h4>
+    <h4>Short Description :{{ data.short_desc }}</h4>
+    <br>
+    <a  class="btn btn-danger mr-5" href="{% url 'delete_myoffer_confirm' offer_id=data.id %}">Yes,Delete</a>
+    <a  class="btn btn-primary" href="{% url 'myoffer_list' %}">Cancel</a>
+</div>
+</div>

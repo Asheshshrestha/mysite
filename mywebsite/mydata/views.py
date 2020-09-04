@@ -562,7 +562,7 @@ def update_myoffer(request,offer_id):
 @login_required
 def delete_myoffer(request,offer_id):
 
-    template_name = ''
+    template_name = 'dashboard\pages\workspace\integration\offers\offer_delete.html'
     offer = Offers.objects.get(id=offer_id)
     context = {
         'data':offer
@@ -572,7 +572,7 @@ def delete_myoffer(request,offer_id):
 @login_required
 def delete_myoffer_confirm(request,offer_id):
 
-    template_name = ''
+    template_name = 'dashboard\pages\workspace\integration\offers\offer_delete.html'
     offer = Offers.objects.get(id= offer_id)
     if offer is not None:
         offer.delete()
