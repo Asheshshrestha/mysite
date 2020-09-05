@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.db.models import Q
+from project.models import ProjectName
 from mydata.forms import (TestimonialMessageForm, UserIntroForm,
                             AboutMyselfForm,
                             SkillsForm,
@@ -598,3 +599,5 @@ def add_myoffer(request):
         form = OffersForm()
 
     return render(request,template_name,{'form':form})
+
+

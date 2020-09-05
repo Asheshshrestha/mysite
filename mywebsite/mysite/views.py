@@ -102,6 +102,10 @@ def single_blog(request,blog_id):
     }
     return render(request,template_name,context)
 
-def elements(request):
-    template_name = "elements.html"
-    return render(request,template_name)
+def projects(request):
+    template_name = "pages\projects\projects.html"
+    project_list = ProjectName.objects.all()
+    context={
+        'projects':project_list
+    }
+    return render(request,template_name,context)

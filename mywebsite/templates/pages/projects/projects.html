@@ -1,0 +1,32 @@
+
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block head %}
+{% include 'slices/head.html' %}
+{% endblock head %}
+
+{%block navbar %}
+{% include 'slices/navbar.html'%}
+{% endblock navbar%}
+
+   {% block body %}
+
+        {% block banner %}
+		{% include 'pages\projects\slices\project_banner.html' %}
+		{% endblock banner %}
+        <!--================End Home Banner Area =================-->
+        
+     {% block gallery %}
+		{% include 'pages/index/slices/gallery.html'%}
+		{% endblock gallery %}
+
+        <!--================End Home Gallery Area =================-->
+       {% endblock body %}
+  
+{% block footer %}
+{% include 'slices/footer.html'%}
+{% endblock footer%}
+{% block scripts %}
+{%include 'slices/scripts.html'%}
+{% endblock scripts%}

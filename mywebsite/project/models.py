@@ -8,6 +8,7 @@ import sys
 
 
 class ProjectName(models.Model):
+    
     type_choose=(('hardware','hardware'),('DjangoWebpage','DjangoWebpage'),('logo','logo'),('Diy','Diy'),('Desktop','Desktop'))
     title = models.CharField(max_length=225)
     sub_title = models.CharField(max_length=225)
@@ -15,7 +16,7 @@ class ProjectName(models.Model):
     view_count = models.IntegerField(default=0)
     uploaded = models.DateTimeField(auto_now_add=True)
     updated = models.DateField(auto_now_add=True)
-    file_copy = models.FileField(null=True)
+    project_url = models.URLField(null=True)
     cover_image = models.ImageField(null=True)
     project_type =models.CharField(max_length=16,choices=type_choose)
     def save(self):
