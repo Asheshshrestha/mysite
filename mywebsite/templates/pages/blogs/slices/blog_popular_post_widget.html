@@ -1,0 +1,15 @@
+{% load static %}
+
+ <aside class="single_sidebar_widget popular_post_widget">
+                                <h3 class="widget_title">Popular Posts</h3>
+                                {% for blogs in p_blog %}
+                                <div class="media post_item">
+                                    <img src="{{ blogs.cover_image.url}}" height='60' width='100' alt="post">
+                                    <div class="media-body">
+                                        <a href="{% url 'blog_detail' blog_id=blogs.id %}"><h3>{{ blogs.title }}</h3></a>
+                                        <p>{{ blogs.pub_date}}</p>
+                                    </div>
+                                </div>
+                               {% endfor %}
+                                <div class="br"></div>
+                            </aside>

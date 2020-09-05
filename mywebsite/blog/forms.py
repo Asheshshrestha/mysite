@@ -6,4 +6,10 @@ class BlogForm(forms.ModelForm):
     class Meta:
 
         model = BlogModel
-        fields = '__all__'
+        fields = (
+                    'title',
+                    'cover_image',
+                    'summary',
+                    'category',
+                    'content'
+        )

@@ -1,0 +1,30 @@
+{% load static %}
+
+<!--================Blog Area =================-->
+        <section class="blog_area single-post-area p_120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 posts-list">
+
+                        {% block blog_post %}
+                        {% include 'pages\blogs\single_blog\slices\blog_post_area.html' %}
+                        {% endblock blog_post %}
+                       
+                        {% comment %} {% block comment %}
+                        {% include 'pages\blogs\single_blog\slices\comment_area.html' %}
+                        {% endblock comment %} {% endcomment %}
+
+                        {% comment %} {% block comment_form %}
+                        {% include 'pages\blogs\single_blog\slices\comment_form.html' %}
+                        {% endblock comment_form %} {% endcomment %}
+
+                    </div>
+                   
+                        {% block 'blog_right_bar'%}
+                        {% include 'pages\blogs\slices\blog_right_bar.html' %}
+                        {% endblock 'blog_right_bar'%}
+                    
+                </div>
+            </div>
+        </section>
+        <!--================Blog Area =================-->

@@ -15,7 +15,7 @@ def add_blog(request):
 
     form = BlogForm()
     if request.method == 'POST':
-        form = BlogForm(data=request.POST)
+        form = BlogForm(data=request.POST,files=request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request,'Your new  blog is added')

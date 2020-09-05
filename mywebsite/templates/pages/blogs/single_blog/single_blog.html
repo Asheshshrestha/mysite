@@ -1,0 +1,30 @@
+
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block head %}
+{% include 'slices/head.html' %}
+{% endblock head %}
+
+{%block navbar %}
+{% include 'slices/navbar.html'%}
+{% endblock navbar%}
+
+   {% block body %}
+     
+     {% block banner %}
+     {% include 'pages\blogs\single_blog\slices\banner.html' %}
+     {% endblock banner %}
+        
+     {% block blog_area %}
+     {% include 'pages\blogs\single_blog\slices\blog_area.html' %}
+     {% endblock blog_area %}
+
+  {% endblock body %}
+  
+{% block footer %}
+{% include 'slices/footer.html'%}
+{% endblock footer%}
+{% block scripts %}
+{%include 'slices/scripts.html'%}
+{% endblock scripts%}

@@ -1,0 +1,12 @@
+ {% load static %}
+ <aside class="single_sidebar_widget search_widget">
+                                <form method='get'>
+                                <div class="input-group">
+                                    <input name="q" value="{{request.GET.q}}" type="text" class="form-control" placeholder="Search Posts">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
+                                    </span>
+                                </div><!-- /input-group -->
+                                </form>
+                                <div class="br"></div>
+                            </aside>

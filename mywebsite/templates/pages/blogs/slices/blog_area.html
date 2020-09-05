@@ -1,0 +1,20 @@
+  {% load static %}
+   
+        <!--================Blog Area =================-->
+        <section class="blog_area">
+            <div class="container">
+                <div class="row">
+                    {% block 'blog_list'%}
+                    {% include 'pages\blogs\slices\blog_list_area.html' %}
+                    {% endblock 'blog_list'%}
+
+                    {% block 'blog_right_bar'%}
+                    {% include 'pages\blogs\slices\blog_right_bar.html' %}
+                    {% endblock 'blog_right_bar'%}
+
+                   
+                </div>
+            </div>
+        </section>
+        <!--================Blog Area =================-->
+        
