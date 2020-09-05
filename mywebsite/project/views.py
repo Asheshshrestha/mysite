@@ -48,7 +48,7 @@ def update_project(request,id):
 @login_required
 def delete_project(request,id):
 
-    template_name = 'dashboard\pages\workspace\integration\offers\offer_delete.html'
+    template_name = 'dashboard\pages\workspace\general\projects\project_delete.html'
     offer = ProjectName.objects.get(id=id)
     context = {
         'data':offer
@@ -58,12 +58,12 @@ def delete_project(request,id):
 @login_required
 def delete_project_confirm(request,id):
 
-    template_name = 'dashboard\pages\workspace\integration\offers\offer_delete.html'
+    template_name = 'dashboard\pages\workspace\general\projects\project_delete.html'
     offer = ProjectName.objects.get(id= id)
     if offer is not None:
         offer.delete()
         messages.warning(request,'Your Data is deleted')
-        return redirect('myoffer_list')
+        return redirect('project_list')
     context = {
         'data':offer
     }
@@ -75,11 +75,11 @@ def add_project(request):
 
     form = ProjectForm()
     if request.method == 'POST':
-        form = ProjectForm(data=request.POST)
+        form = ProjectForm(data=request.POST,files=request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request,'Your new  data is added')
-            return redirect('myoffer_list')
+            return redirect('project_list')
     else:
         form = ProjectForm()
 
