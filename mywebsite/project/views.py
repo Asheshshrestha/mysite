@@ -28,17 +28,17 @@ def project_list(request):
 
 
 @login_required
-def update_project(request,offer_id):
+def update_project(request,id):
 
-    template_name = 'dashboard\pages\workspace\integration\offers\offer_update.html'
-    offer = ProjectName.objects.get(id = offer_id)
+    template_name = 'dashboard\pages\workspace\general\projects\project_update.html'
+    offer = ProjectName.objects.get(id = id)
     form = ProjectForm(instance=offer)
     if request.method == 'POST':
-        form = ProjectForm(data=request.POST,instance=offer)
+        form = ProjectForm(data=request.POST,files=request.FILES,instance=offer)
         if form.is_valid():
             form.save()
-            messages.success(request,'Your data is updated')
-            return redirect('myoffer_list')
+            messages.success(request,'Your Project Data is updated')
+            return redirect('project_list')
     else:
         form = ProjectForm(instance=offer)
 
@@ -46,20 +46,20 @@ def update_project(request,offer_id):
 
 
 @login_required
-def delete_project(request,offer_id):
+def delete_project(request,id):
 
     template_name = 'dashboard\pages\workspace\integration\offers\offer_delete.html'
-    offer = ProjectName.objects.get(id=offer_id)
+    offer = ProjectName.objects.get(id=id)
     context = {
         'data':offer
     }
     return render(request,template_name,context)
 
 @login_required
-def delete_project_confirm(request,offer_id):
+def delete_project_confirm(request,id):
 
     template_name = 'dashboard\pages\workspace\integration\offers\offer_delete.html'
-    offer = ProjectName.objects.get(id= offer_id)
+    offer = ProjectName.objects.get(id= id)
     if offer is not None:
         offer.delete()
         messages.warning(request,'Your Data is deleted')
