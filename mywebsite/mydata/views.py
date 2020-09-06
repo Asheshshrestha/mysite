@@ -1,3 +1,5 @@
+from django.db.models.aggregates import Count, Sum
+from blog.models import BlogModel
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -30,8 +32,16 @@ from django.contrib import messages
 def dashboard_index(request):
 
     template_name = 'dashboard/pages/index/index.html'
-
-    return render(request,template_name=template_name)
+    blog_count = BlogModel.objects.all().count()
+    project_count = ProjectName.objects.all().count()
+    view_count = BlogModel.objects.aggregate(Sum('view_count'))['view_count__sum']
+    print(view_count)
+    context={
+        'blog_count':blog_count,
+        'project_count':project_count,
+        'view_count':view_count
+    }
+    return render(request,template_name=template_name,context=context)
 
 @login_required
 def members(request):
