@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     #my apps
     'mysite',
@@ -50,7 +51,7 @@ INSTALLED_APPS = [
     'faicon',
     'crispy_forms',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -174,3 +175,5 @@ CKEDITOR_CONFIGS = {
 }
 
 ###################################
+
+NEWSLETTER_CONFIRM_EMAIL = False

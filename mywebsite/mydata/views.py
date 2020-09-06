@@ -35,11 +35,12 @@ def dashboard_index(request):
     blog_count = BlogModel.objects.all().count()
     project_count = ProjectName.objects.all().count()
     view_count = BlogModel.objects.aggregate(Sum('view_count'))['view_count__sum']
-    print(view_count)
+    member_count = User.objects.all().count()
     context={
         'blog_count':blog_count,
         'project_count':project_count,
-        'view_count':view_count
+        'view_count':view_count,
+        'member_count':member_count
     }
     return render(request,template_name=template_name,context=context)
 

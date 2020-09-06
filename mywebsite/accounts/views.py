@@ -12,7 +12,7 @@ from django.contrib import messages
 
 # Create your views here.
 
-
+@login_required
 class SignUpView(View):
     
     def get(self, request, *args, **kwargs):

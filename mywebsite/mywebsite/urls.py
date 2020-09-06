@@ -20,12 +20,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+   # path('admin/', admin.site.urls),
     path('ashesh/',include('mysite.urls')),
     path('',home,name="home"),
     path('faicon/',include('faicon.urls')),
     path('dashboard/',include('mydata.urls')),
     path('account/',include('accounts.urls')),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls'))
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
