@@ -12,14 +12,14 @@ from django.contrib import messages
 
 # Create your views here.
 
-@login_required
+
 class SignUpView(View):
-    
+    @login_required
     def get(self, request, *args, **kwargs):
         template_name='dashboard/pages/account/register.html'
         form = SignUpForm()
         return render(request,template_name,{'form':form})
-
+    @login_required
     def post(self, request, *args, **kwargs):
         #value = {'username':"",'email':"",'first_name':"",'last_name':"",'password1':"Ashesh1234",'password2':"Ashesh1234"}
         form = SignUpForm(request.POST)
