@@ -67,14 +67,14 @@ def members(request):
 @login_required
 def general_setting(request):
 
-    template_name = 'dashboard\pages\workspace\general\general.html'
+    template_name = 'dashboard/pages/workspace/general/general.html'
 
     return render(request,template_name)
 
 @login_required
 def personal_info_setting(request):
     data = PersonalData.objects.first()
-    template_name ='dashboard\pages\workspace\integration\intro_setting_page.html'
+    template_name ='dashboard/pages/workspace/integration/intro_setting_page.html'
     if request.method == 'POST':
         form = UserIntroForm(data = request.POST,files=request.FILES,instance=data)
         if form.is_valid():
@@ -90,7 +90,7 @@ def personal_info_setting(request):
 def about_yourself_setting(request):
     
     data = AboutMyself.objects.first()
-    template_name = 'dashboard\pages\workspace\integration\\about_yourself_setting_page.html'
+    template_name = 'dashboard/pages/workspace/integration/about_yourself_setting_page.html'
     if request.method == 'POST':
         form = AboutMyselfForm(data = request.POST,files=request.FILES,instance=data)
         if form.is_valid():
@@ -106,7 +106,7 @@ def about_yourself_setting(request):
 @login_required
 def skills_list(request):
 
-    template_name ='dashboard\pages\workspace\integration\skills\skills_list.html'
+    template_name ='dashboard/pages/workspace/integration/skills/skills_list.html'
     skill_obj = Skills.objects.all()
     query = request.GET.get("q")
     if query:
@@ -125,7 +125,7 @@ def skills_list(request):
 @login_required
 def update_skill(request,skills_no):
 
-    template_name = 'dashboard\pages\workspace\integration\skills\skills_update.html'
+    template_name = 'dashboard/pages/workspace/integration/skills/skills_update.html'
     skill = Skills.objects.get(id = skills_no)
     form = SkillsForm(instance=skill)
     if request.method == 'POST':
@@ -143,7 +143,7 @@ def update_skill(request,skills_no):
 @login_required
 def delete_skill(request,skills_id):
 
-    template_name = 'dashboard\pages\workspace\integration\skills\skills_delete.html'
+    template_name = 'dashboard/pages/workspace/integration/skills/skills_delete.html'
     skill = Skills.objects.get(id=skills_id)
     context = {
         'data':skill
@@ -153,7 +153,7 @@ def delete_skill(request,skills_id):
 @login_required
 def delete_skill_confirm(request,skills_id):
 
-    template_name = 'dashboard\pages\workspace\integration\skills\skills_delete.html'
+    template_name = 'dashboard/pages/workspace/integration/skills/skills_delete.html'
     skill = Skills.objects.get(id= skills_id)
     if skill is not None:
         skill.delete()
@@ -166,7 +166,7 @@ def delete_skill_confirm(request,skills_id):
 
 @login_required
 def add_skill(request):
-    template_name = 'dashboard\pages\workspace\integration\skills\skills_update.html'
+    template_name = 'dashboard/pages/workspace/integration/skills/skills_update.html'
 
     form = SkillsForm()
     if request.method == 'POST':
@@ -183,7 +183,7 @@ def add_skill(request):
 @login_required
 def work_count_list(request):
 
-    template_name ='dashboard\pages\workspace\integration\work_count\work_count_list.html'
+    template_name ='dashboard/pages/workspace/integration/work_count/work_count_list.html'
     work_count_obj = WorkCount.objects.all()
     query = request.GET.get("q")
     if query:
@@ -203,7 +203,7 @@ def work_count_list(request):
 @login_required
 def update_work_count(request,work_count_id):
 
-    template_name = 'dashboard\pages\workspace\integration\work_count\work_count_update.html'
+    template_name = 'dashboard/pages/workspace/integration/work_count/work_count_update.html'
     work_count = WorkCount.objects.get(id = work_count_id)
     form = WorkCountForm(instance=work_count)
     if request.method == 'POST':
@@ -221,7 +221,7 @@ def update_work_count(request,work_count_id):
 @login_required
 def delete_work_count(request,work_count_id):
 
-    template_name = 'dashboard\pages\workspace\integration\work_count\work_count_delete.html'
+    template_name = 'dashboard/pages/workspace/integration/work_count/work_count_delete.html'
     work_count = WorkCount.objects.get(id=work_count_id)
     context = {
         'data':work_count
@@ -232,7 +232,7 @@ def delete_work_count(request,work_count_id):
 @login_required
 def delete_work_count_confirm(request,work_count_id):
 
-    template_name = 'dashboard\pages\workspace\integration\work_count\work_count_delete.html'
+    template_name = 'dashboard/pages/workspace/integration/work_count/work_count_delete.html'
     work_count = WorkCount.objects.get(id= work_count_id)
     if work_count is not None:
         work_count.delete()
@@ -245,7 +245,7 @@ def delete_work_count_confirm(request,work_count_id):
 
 @login_required
 def add_work_count(request):
-    template_name = 'dashboard\pages\workspace\integration\work_count\\add_work_count.html'
+    template_name = 'dashboard/pages/workspace/integration/work_count/add_work_count.html'
 
     form = WorkCountForm()
     if request.method == 'POST':
@@ -263,7 +263,7 @@ def add_work_count(request):
 @login_required
 def education_list(request):
 
-    template_name ='dashboard\pages\workspace\integration\education\education_setting_page.html'
+    template_name ='dashboard/pages/workspace/integration/education/education_setting_page.html'
     education_obj = Education.objects.all()
     query = request.GET.get("q")
     if query:
@@ -283,7 +283,7 @@ def education_list(request):
 @login_required
 def update_education(request,education_id):
 
-    template_name = 'dashboard\pages\workspace\integration\education\education_update.html'
+    template_name = 'dashboard/pages/workspace/integration/education/education_update.html'
     education = Education.objects.get(id = education_id)
     form = EducationForm(instance=education)
     if request.method == 'POST':
@@ -301,7 +301,7 @@ def update_education(request,education_id):
 @login_required
 def delete_education(request,education_id):
 
-    template_name = 'dashboard\pages\workspace\integration\education\education_delete.html'
+    template_name = 'dashboard/pages/workspace/integration/education/education_delete.html'
     education = Education.objects.get(id=education_id)
     context = {
         'data':education
@@ -311,7 +311,7 @@ def delete_education(request,education_id):
 @login_required
 def delete_education_confirm(request,education_id):
 
-    template_name = 'dashboard\pages\workspace\integration\education\education_delete.html'
+    template_name = 'dashboard/pages/workspace/integration/education/education_delete.html'
     education = Education.objects.get(id= education_id)
     if education is not None:
         education.delete()
@@ -324,7 +324,7 @@ def delete_education_confirm(request,education_id):
 
 @login_required
 def add_education(request):
-    template_name = 'dashboard\pages\workspace\integration\education\\add_education.html'
+    template_name = 'dashboard/pages/workspace/integration/education/add_education.html'
 
     form = EducationForm()
     if request.method == 'POST':
@@ -341,7 +341,7 @@ def add_education(request):
 @login_required
 def experience_list(request):
 
-    template_name ='dashboard\pages\workspace\integration\experience\experience_list.html'
+    template_name ='dashboard/pages/workspace/integration/experience/experience_list.html'
     exp_obj = Experience.objects.all()
     query = request.GET.get("q")
     if query:
@@ -363,7 +363,7 @@ def experience_list(request):
 @login_required
 def update_experience(request,exp_id):
 
-    template_name = 'dashboard\pages\workspace\integration\experience\experience_update.html'
+    template_name = 'dashboard/pages/workspace/integration/experience/experience_update.html'
     exp = Experience.objects.get(id = exp_id)
     form = ExperienceForm(instance=exp)
     if request.method == 'POST':
@@ -382,7 +382,7 @@ def update_experience(request,exp_id):
 @login_required
 def delete_experience(request,exp_id):
 
-    template_name = 'dashboard\pages\workspace\integration\experience\experience_delete.html'
+    template_name = 'dashboard/pages/workspace/integration/experience/experience_delete.html'
     exp = Experience.objects.get(id=exp_id)
     context = {
         'data':exp
@@ -392,7 +392,7 @@ def delete_experience(request,exp_id):
 @login_required
 def delete_experience_confirm(request,exp_id):
 
-    template_name = 'dashboard\pages\workspace\integration\experience\experience_delete.html'
+    template_name = 'dashboard/pages/workspace/integration/experience/experience_delete.html'
     exp = Experience.objects.get(id= exp_id)
     if exp is not None:
         exp.delete()
@@ -406,7 +406,7 @@ def delete_experience_confirm(request,exp_id):
 @login_required
 def add_experience(request):
 
-    template_name = 'dashboard\pages\workspace\integration\experience\\add_experience.html'
+    template_name = 'dashboard/pages/workspace/integration/experience/add_experience.html'
 
     form = ExperienceForm()
     if request.method == 'POST':
@@ -425,7 +425,7 @@ def add_experience(request):
 def testimonial_setting(request):
     
     data = Testimonials.objects.first()
-    template_name = 'dashboard\pages\workspace\integration\\testimonials_setting_page.html'
+    template_name = 'dashboard/pages/workspace/integration/testimonials_setting_page.html'
     if request.method == 'POST':
         form = TestimonialsForm(data = request.POST,instance=data)
         if form.is_valid():
@@ -440,7 +440,7 @@ def testimonial_setting(request):
 @login_required
 def testimonial_list(request):
 
-    template_name ='dashboard\pages\workspace\integration\\testimonials\\testimonials_list.html'
+    template_name ='dashboard/pages/workspace/integration/testimonials/testimonials_list.html'
     testimonial_obj = TestimonialMessage.objects.all()
     query = request.GET.get("q")
     if query:
@@ -459,7 +459,7 @@ def testimonial_list(request):
 @login_required
 def update_testimonial(request,tes_id):
 
-    template_name = 'dashboard\pages\workspace\integration\\testimonials\\testimonial_update.html'
+    template_name = 'dashboard/pages/workspace/integration/testimonials/testimonial_update.html'
     education = TestimonialMessage.objects.get(id = tes_id)
     form = TestimonialMessageForm(instance=education)
     if request.method == 'POST':
@@ -477,7 +477,7 @@ def update_testimonial(request,tes_id):
 @login_required
 def delete_testimonial(request,tes_id):
 
-    template_name = 'dashboard\pages\workspace\integration\\testimonials\\testimonial_delete.html'
+    template_name = 'dashboard/pages/workspace/integration/testimonials/testimonial_delete.html'
     education = TestimonialMessage.objects.get(id=tes_id)
     context = {
         'data':education
@@ -487,7 +487,7 @@ def delete_testimonial(request,tes_id):
 @login_required
 def delete_testimonial_confirm(request,tes_id):
 
-    template_name = 'dashboard\pages\workspace\integration\\testimonials\\testimonial_delete.html'
+    template_name = 'dashboard/pages/workspace/integration/testimonials/testimonial_delete.html'
     education = TestimonialMessage.objects.get(id= tes_id)
     if education is not None:
         education.delete()
@@ -500,7 +500,7 @@ def delete_testimonial_confirm(request,tes_id):
 
 @login_required
 def add_testimonial(request):
-    template_name = 'dashboard\pages\workspace\integration\\testimonials\\add_testimonial.html'
+    template_name = 'dashboard/pages/workspace/integration/testimonials/add_testimonial.html'
 
     form = TestimonialMessageForm()
     if request.method == 'POST':
@@ -518,7 +518,7 @@ def add_testimonial(request):
 def myoffer_setting(request):
     
     data = OfferToClient.objects.first()
-    template_name = 'dashboard\pages\workspace\integration\offer_setting_page.html'
+    template_name = 'dashboard/pages/workspace/integration/offer_setting_page.html'
     if request.method == 'POST':
         form = OfferToClientForm(data = request.POST,instance=data)
         if form.is_valid():
@@ -535,7 +535,7 @@ def myoffer_setting(request):
 @login_required
 def myoffer_list(request):
 
-    template_name ='dashboard\pages\workspace\integration\offers\offer_list.html'
+    template_name ='dashboard/pages/workspace/integration/offers/offer_list.html'
     offer_obj = Offers.objects.all()
     query = request.GET.get("q")
     if query:
@@ -556,7 +556,7 @@ def myoffer_list(request):
 @login_required
 def update_myoffer(request,offer_id):
 
-    template_name = 'dashboard\pages\workspace\integration\offers\offer_update.html'
+    template_name = 'dashboard/pages/workspace/integration/offers/offer_update.html'
     offer = Offers.objects.get(id = offer_id)
     form = OffersForm(instance=offer)
     if request.method == 'POST':
@@ -574,7 +574,7 @@ def update_myoffer(request,offer_id):
 @login_required
 def delete_myoffer(request,offer_id):
 
-    template_name = 'dashboard\pages\workspace\integration\offers\offer_delete.html'
+    template_name = 'dashboard/pages/workspace/integration/offers/offer_delete.html'
     offer = Offers.objects.get(id=offer_id)
     context = {
         'data':offer
@@ -584,7 +584,7 @@ def delete_myoffer(request,offer_id):
 @login_required
 def delete_myoffer_confirm(request,offer_id):
 
-    template_name = 'dashboard\pages\workspace\integration\offers\offer_delete.html'
+    template_name = 'dashboard/pages/workspace/integration/offers/offer_delete.html'
     offer = Offers.objects.get(id= offer_id)
     if offer is not None:
         offer.delete()
@@ -597,7 +597,7 @@ def delete_myoffer_confirm(request,offer_id):
 
 @login_required
 def add_myoffer(request):
-    template_name = 'dashboard\pages\workspace\integration\offers\\add_offer.html'
+    template_name = 'dashboard/pages/workspace/integration/offers/add_offer.html'
 
     form = OffersForm()
     if request.method == 'POST':

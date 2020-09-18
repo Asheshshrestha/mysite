@@ -11,7 +11,7 @@ from django.contrib import messages
 
 @login_required
 def add_blog(request):
-    template_name = 'dashboard\pages\workspace\general\\blog\\add_blog.html'
+    template_name = 'dashboard/pages/workspace/general/blog/add_blog.html'
 
     form = BlogForm()
     if request.method == 'POST':
@@ -28,7 +28,7 @@ def add_blog(request):
 @login_required
 def blog_list(request):
 
-    template_name ='dashboard\pages\workspace\general\\blog\\blog_list.html'
+    template_name ='dashboard/pages/workspace/general/blog/blog_list.html'
     blog_obj = BlogModel.objects.all()
     query = request.GET.get("q")
     if query:
@@ -47,7 +47,7 @@ def blog_list(request):
 @login_required
 def update_blog(request,blog_id):
 
-    template_name = 'dashboard\pages\workspace\general\\blog\\blog_update.html'
+    template_name = 'dashboard/pages/workspace/general/blog/blog_update.html'
     blog = BlogModel.objects.get(id = blog_id)
     form = BlogForm(instance=blog)
     if request.method == 'POST':
@@ -64,7 +64,7 @@ def update_blog(request,blog_id):
 @login_required
 def delete_blog(request,blog_id):
 
-    template_name = 'dashboard\pages\workspace\general\\blog\\blog_delete.html'
+    template_name = 'dashboard/pages/workspace/general/blog/blog_delete.html'
     blog = BlogModel.objects.get(id=blog_id)
     context = {
         'data':blog
@@ -74,7 +74,7 @@ def delete_blog(request,blog_id):
 @login_required
 def delete_blog_confirm(request,blog_id):
 
-    template_name = 'dashboard\pages\workspace\general\\blog\\blog_delete.html'
+    template_name = 'dashboard/pages/workspace/general/blog/blog_delete.html'
     blog = BlogModel.objects.get(id= blog_id)
     if blog is not None:
         blog.delete()

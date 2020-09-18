@@ -46,7 +46,7 @@ def aboutus(request):
     return render(request,template_name,context=context)
 
 def blogs(request):
-    template_name = "pages\\blogs\\blog.html"
+    template_name = "pages/blogs/blog.html"
     blogs_obj = BlogModel.objects.all()
     query = request.GET.get("q")
     if query:
@@ -88,7 +88,7 @@ def services(request):
     return render(request,template_name,context=context)
 
 def single_blog(request,blog_id):
-    template_name = "pages\\blogs\single_blog\single_blog.html"
+    template_name = "pages/blogs/single_blog/single_blog.html"
     blog = BlogModel.objects.get(id= blog_id)
     b_counts = BlogModel.objects.values('category').annotate(count=Count('category'))
     p_blogs = BlogModel.objects.all().order_by('-view_count')[:4]
@@ -103,7 +103,7 @@ def single_blog(request,blog_id):
     return render(request,template_name,context)
 
 def projects(request):
-    template_name = "pages\projects\projects.html"
+    template_name = "pages/projects/projects.html"
     project_list = ProjectName.objects.all()
     context={
         'projects':project_list

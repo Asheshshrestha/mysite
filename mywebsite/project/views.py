@@ -10,7 +10,7 @@ from django.contrib import messages
 @login_required
 def project_list(request):
 
-    template_name ='dashboard\pages\workspace\general\projects\project_list.html'
+    template_name ='dashboard/pages/workspace/general/projects/project_list.html'
     project_obj = ProjectName.objects.all()
     query = request.GET.get("q")
     if query:
@@ -30,7 +30,7 @@ def project_list(request):
 @login_required
 def update_project(request,id):
 
-    template_name = 'dashboard\pages\workspace\general\projects\project_update.html'
+    template_name = 'dashboard/pages/workspace/general/projects/project_update.html'
     offer = ProjectName.objects.get(id = id)
     form = ProjectForm(instance=offer)
     if request.method == 'POST':
@@ -48,7 +48,7 @@ def update_project(request,id):
 @login_required
 def delete_project(request,id):
 
-    template_name = 'dashboard\pages\workspace\general\projects\project_delete.html'
+    template_name = 'dashboard/pages/workspace/general/projects/project_delete.html'
     offer = ProjectName.objects.get(id=id)
     context = {
         'data':offer
@@ -58,7 +58,7 @@ def delete_project(request,id):
 @login_required
 def delete_project_confirm(request,id):
 
-    template_name = 'dashboard\pages\workspace\general\projects\project_delete.html'
+    template_name = 'dashboard/pages/workspace/general/projects/project_delete.html'
     offer = ProjectName.objects.get(id= id)
     if offer is not None:
         offer.delete()
@@ -71,7 +71,7 @@ def delete_project_confirm(request,id):
 
 @login_required
 def add_project(request):
-    template_name = 'dashboard\pages\workspace\general\projects\\add_project.html'
+    template_name = 'dashboard/pages/workspace/general/projects/add_project.html'
 
     form = ProjectForm()
     if request.method == 'POST':
