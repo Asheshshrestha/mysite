@@ -1,5 +1,6 @@
 
 from django import forms
+from django.forms import widgets
 from mydata.models import (PersonalData
                             ,AboutMyself,
                             WorkCount,
@@ -13,10 +14,12 @@ from mydata.models import (PersonalData
 
 class UserIntroForm(forms.ModelForm):
     
+    #dob = forms.DateField.widget.attrs.update({'id':'datepicker'})
     class Meta:
         
         model = PersonalData
-        widgets = { 'short_desc': forms.Textarea()}
+        widgets = { 'short_desc': forms.Textarea(),
+                    'dob':forms.widgets.DateInput(attrs={'type': 'date'})}
         labels = {
         "fb_link": "Facebook Link",
         "tw_link": "Twitter Link",
@@ -117,6 +120,11 @@ class EducationForm(forms.ModelForm):
 
     class Meta:
          model = Education
+         widgets={
+             'start_date':forms.widgets.DateInput(attrs={'type': 'date'}),
+             'end_date':forms.widgets.DateInput(attrs={'type': 'date'})
+             
+         }
          fields = '__all__'
 
 class ExperienceForm(forms.ModelForm):
@@ -124,4 +132,8 @@ class ExperienceForm(forms.ModelForm):
     class Meta:
         
         model = Experience
+        widgets = {
+             'start_date':forms.widgets.DateInput(attrs={'type': 'date'}),
+             'end_date':forms.widgets.DateInput(attrs={'type': 'date'})
+        }
         fields = '__all__'
