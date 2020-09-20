@@ -6,6 +6,7 @@ class BlogForm(forms.ModelForm):
     class Meta:
 
         model = BlogModel
+        widgets = {'summary':forms.Textarea()}
         fields = (
                     'title',
                     'cover_image',

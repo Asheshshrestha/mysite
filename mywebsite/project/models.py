@@ -17,7 +17,7 @@ class ProjectName(models.Model):
     uploaded = models.DateTimeField(auto_now_add=True)
     updated = models.DateField(auto_now_add=True)
     project_url = models.URLField(null=True)
-    cover_image = models.ImageField(null=True)
+    cover_image = models.ImageField(null=True,upload_to='project_pic')
     project_type =models.CharField(max_length=16,choices=type_choose)
     def save(self):
     

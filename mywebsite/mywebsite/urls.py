@@ -26,6 +26,7 @@ urlpatterns = [
     path('faicon/',include('faicon.urls')),
     path('dashboard/',include('mydata.urls')),
     path('account/',include('accounts.urls')),
-    path('ckeditor/', include('ckeditor_uploader.urls'))
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('media/',include('media_manager.urls'))
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,3 +1,4 @@
+from sys import path
 from django.db import models
 from faicon.fields import FAIconField
 from PIL import Image
@@ -10,7 +11,7 @@ class PersonalData(models.Model):
 
     first_name = models.CharField(max_length=10,null=True)
     last_name = models.CharField(max_length=20,null=True)
-    image = models.ImageField(null=True)
+    image = models.ImageField(null=True,upload_to='profile_pic')
     carrer_status = models.CharField(max_length=30,null=True)
     short_desc = models.CharField(max_length=200,null=True)
     dob = models.DateField(null=True)

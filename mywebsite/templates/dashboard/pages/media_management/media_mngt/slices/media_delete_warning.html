@@ -1,0 +1,22 @@
+ {% load static %} {% load crispy_forms_tags %}
+<!-- DataTales Example -->
+<div class="card shadow mb-4 col-12">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">My Offers > Offers > Delete Offers</h6>
+    </div>
+    <div class="card-body">
+    <h3> Do you really want to delete Image?</h3>
+    <br>
+    <img src="{{ image }}" alt="media" class="img-thumbnail">
+
+    <br>
+    <hr>
+    <form method='post' action='/media/delete_confirm/'>
+    {% csrf_token %}
+    <input type='hidden' name='image' value="{{ image}}"/>
+     <button type='submit' class="btn btn-danger mr-5">Yes,Delete</button>
+    <a  class="btn btn-primary" href="{% url 'media_list' %}">Cancel</a>
+    </form>
+   
+</div>
+</div>

@@ -1,0 +1,28 @@
+{% load static %}
+<div class="col-xl-12 col-lg-12">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Project Cover Images</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                <div class="row">
+                  {% for i in project_img %}
+                  <div class="card m-1" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ i.src }}" alt="Card image cap" height=150>
+                    <div class="card-body">
+                        <p class="card-title">{{ i.name }}</p>
+                        {% if not i.active  %}
+                        <a href="{% url 'delete_media' img_id=i.src %}" class="btn btn-danger">Delete <i class="far fa-trash-alt"></i></a>
+                        {% else %}
+                        <a href="#" class="btn btn-info">Active</a>
+                        {% endif %}
+                        <a href="{% url 'download_media' img_id=i.src %}" class="btn btn-success">Download <i class="fas fa-download"></i></a>
+                    </div>
+                    </div>
+                  {% endfor %}
+                </div>
+                </div>
+              </div>
+            </div>

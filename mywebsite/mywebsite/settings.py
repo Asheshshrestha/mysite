@@ -141,8 +141,8 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGIN_URL = '/account/login'
 
-MEDIA_URL ='/projectpic/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'projectpic')
+MEDIA_URL ='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -165,7 +165,7 @@ SITE_ID = 1
 
 CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
 
-CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_UPLOAD_PATH = 'blog_content/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
 CKEDITOR_CONFIGS = {
