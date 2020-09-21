@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'mydata',
     'accounts',
     'blog',
+    'media_manager',
+    'seo_manager',
 
     #third party
     'faicon',
