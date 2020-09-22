@@ -1,5 +1,5 @@
 from django.urls import path
-from accounts.views import SignUpView,change_password,user_update
+from accounts.views import SignUpView,change_password,user_update,create_group,group_list,update_group,delete_group,delete_group_confirm
 from django.contrib.auth.views import (LoginView,
                                         LogoutView,
                                         PasswordResetView,
@@ -32,5 +32,10 @@ urlpatterns = [
          ),
          name='password_reset_complete'),
     path('change/password/',change_password,name='change_password'),
-    path('update/profile/',user_update,name='user_update')
+    path('update/profile/',user_update,name='user_update'),
+    path('group/create/',create_group,name='create_group'),
+    path('group/list/',group_list,name='group_list'),
+    path('group/update/<int:grp_id>/',update_group,name='update_group'),
+    path('group/delete/<int:grp_id>/',delete_group,name='delete_group'),
+    path('group/delete_confirm/<int:grp_id>/',delete_group_confirm,name = 'delete_group_confirm')
 ]

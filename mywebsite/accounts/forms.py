@@ -1,7 +1,8 @@
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,Group,Permission
+from django.contrib.admin.widgets import FilteredSelectMultiple
 
 
 class EmailValidation(forms.EmailField):
@@ -27,6 +28,7 @@ class SignUpForm(UserCreationForm):
                  'last_name',
                  'password1',
                  'password2',
+                 'groups'
                
                  )
                  
@@ -43,3 +45,18 @@ class UserUpadateForm(forms.ModelForm):
             'last_name',
             'is_staff'
         )
+class UserGroupForm(forms.ModelForm):
+
+    permissions = forms.ModelMultipleChoiceField(
+        queryset=Permission.objects.all(),
+        widget = FilteredSelectMultiple('permissions',is_stacked=False,attrs={'rows':'2'})
+    )
+    class Media:
+        css = {'all': ('/static/admin/css/widgets.css',), }
+        js = ('/admin/jsi18n/',)
+
+    class Meta:
+        model = Group
+        fields = '__all__'
+    
+        

@@ -1,16 +1,15 @@
+from django.http import request
 from django.shortcuts import get_object_or_404, redirect, render
-from accounts.forms import SignUpForm,UserUpadateForm
+from accounts.forms import SignUpForm,UserUpadateForm,UserGroupForm
 from django.views import View
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,Group
 from django.contrib import messages
-
-
-
-# Create your views here.
+from django.core.paginator import Paginator
+from django.db.models import Q
 
 
 class SignUpView(View):
@@ -36,6 +35,35 @@ class SignUpView(View):
 
         else:
             return render(request, 'dashboard/pages/account/register.html', {'form':form})
+
+
+        
+@login_required
+def create_group(request):
+    template_name = 'dashboard/pages/account/group/create_group.html'
+    if request.method == 'POST':
+        form = UserGroupForm(data=request.POST)
+        context = {
+            'form':form
+        }
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request,'Successfully created new Group User'
+            )
+            return redirect('group_list')
+        else:
+            messages.warning(
+                request,'Please submit valid form.'
+            )
+            return render(request,template_name,context)
+    else:
+        form = UserGroupForm()
+        context ={
+            'form':form
+        }
+        return render(request,template_name,context)
+
 
 @login_required
 def change_password(request):
@@ -72,3 +100,65 @@ def user_update(request):
         form = UserUpadateForm(instance=user)
     
     return render(request,template_name,{'form':form})
+
+
+@login_required
+def group_list(request):
+
+    template_name = 'dashboard/pages/account/group/group_list.html'
+    group_obj = Group.objects.all()
+    query = request.GET.get("q")
+    if query:
+        group_obj = group_obj.filter(
+            Q(name__icontains = query )
+        ).distinct()
+    paginator = Paginator(group_obj,6)
+    page = request.GET.get("page")
+    groups = paginator.get_page(page)
+    context = {
+        'users':groups
+    }
+    return render(request,template_name,context)
+
+@login_required
+def update_group(request,grp_id):
+
+    template_name = 'dashboard/pages/account/group/update_group.html'
+    group = Group.objects.get(id= grp_id)
+    form = UserGroupForm(instance=group)
+    if request.method == 'POST':
+        form = UserGroupForm(data = request.POST,instance=group)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your Group data is updated')
+            return redirect('group_list')
+        else:
+            messages.warning(request,'Submit a valid form')
+            form = UserGroupForm(instance=group)
+    else:
+        form = UserGroupForm(instance=group)
+    return render(request,template_name,{'form':form})
+
+@login_required
+def delete_group(request,grp_id):
+
+    template_name = 'dashboard/pages/account/group/delete_group.html'
+    group = Group.objects.get(id= grp_id)
+    context = {
+        'data':group
+    }
+    return render(request,template_name,context)
+
+@login_required
+def delete_group_confirm(request,grp_id):
+
+    template_name = 'dashboard/pages/account/group/delete_group.html'
+    group = Group.objects.get(id = grp_id)
+    if group is not None:
+        group.delete()
+        messages.warning(request,'Group is Deleted')
+        return redirect('group_list')
+    context = {
+                'data':group
+    }
+    return render(request,template_name,context)

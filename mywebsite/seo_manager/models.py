@@ -14,4 +14,6 @@ class SEOModel(models.Model):
 
     def __str__(self):
         return self.seo_name
+
+
     

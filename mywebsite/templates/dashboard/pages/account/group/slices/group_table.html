@@ -1,0 +1,45 @@
+  {% load static %}
+  <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Groups> Your Groups</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Group Name</th>
+                      <th>Settings</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Group Name</th>
+                      <th>Settings</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    {% for user in users %}
+                    <tr>
+                      <td>{{ user.name |capfirst  }}</td>
+                      <td>
+                        <a type="button" class="btn btn-outline-primary" href="{% url 'update_group' grp_id=user.id %}"><i class="far fa-edit"></i></a>
+                        <a type="button" class="btn btn-outline-danger" href="{% url 'delete_group' grp_id=user.id %}"><i class="far fa-trash-alt"></i></a>
+                      </td>
+                    </tr>
+                    {% endfor%}
+                    <tr>
+                        <td><a type="button" class="btn btn-outline-primary" href="{% url 'create_group'%}"><i class="fa fa-plus-circle"></i></a></td>
+                        <td><a type="button" class="btn btn-outline-primary" href="{% url 'create_group'%}"><i class="fa fa-plus-circle"></i></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        {% block pagination %}
+        {% include 'dashboard/pages/workspace/member/slices/pagination.html' %}
+        {% endblock pagination %}
+       
+            </div>
+       
+          </div>
