@@ -15,6 +15,7 @@
                       <th>Last Name</th>
                       <th>Staff Status</th>
                       <th>Last Login</th>
+                      <th>Settings</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -25,6 +26,8 @@
                       <th>Last Name</th>
                       <th>Staff Status</th>
                       <th>Last Login</th>
+                      <th>Settings</th>
+
                     </tr>
                   </tfoot>
                   <tbody>
@@ -34,10 +37,29 @@
                       <td>{{ user.email }}</td>
                       <td>{{ user.first_name }}</td>
                       <td>{{user.last_name }}</td>
-                      <td>{% if user.is_staff %}<i class="fas fa-check-circle"></i>{% else %}<i class="fas fa-times-circle"></i>{% endif %}</td>
+                      <td>
+                       {% if user.is_superuser %}
+                      <span class="badge badge-dark">Superuser</span>
+                      {% endif %}
+                      {% for group in user.groups.all %} 
+                      <span class="badge badge-dark">{{ group }}</span>
+                      {% endfor %}</td>
                       <td>{{ user.last_login }}</td>
+                      <td>
+                       <a type="button" class="btn btn-outline-primary" href="{% url 'admin_user_update' user_id=user.id %}"><i class="far fa-edit"></i></a>
+                        <a type="button" class="btn btn-outline-danger" href="{% url 'admin_delete_user' user_id=user.id %}"><i class="far fa-trash-alt"></i></a>
+                      </td>
                     </tr>
                     {% endfor%}
+                    <tr>
+                    <td><a type="button" class="btn btn-outline-primary" href="{% url 'create_user'%}"><i class="fa fa-plus-circle"></i></a></td>
+                    <td><a type="button" class="btn btn-outline-primary" href="{% url 'create_user'%}"><i class="fa fa-plus-circle"></i></a></td>
+                    <td><a type="button" class="btn btn-outline-primary" href="{% url 'create_user'%}"><i class="fa fa-plus-circle"></i></a></td>
+                    <td><a type="button" class="btn btn-outline-primary" href="{% url 'create_user'%}"><i class="fa fa-plus-circle"></i></a></td>
+                    <td><a type="button" class="btn btn-outline-primary" href="{% url 'create_user'%}"><i class="fa fa-plus-circle"></i></a></td>
+                    <td><a type="button" class="btn btn-outline-primary" href="{% url 'create_user'%}"><i class="fa fa-plus-circle"></i></a></td>
+                    <td><a type="button" class="btn btn-outline-primary" href="{% url 'create_user'%}"><i class="fa fa-plus-circle"></i></a></td>
+                    </tr>
                   </tbody>
                 </table>
               </div>

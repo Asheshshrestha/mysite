@@ -1,5 +1,16 @@
 from django.urls import path
-from accounts.views import SignUpView,change_password,user_update,create_group,group_list,update_group,delete_group,delete_group_confirm
+from accounts.views import (SignUpView,
+                                change_password,
+                                user_update,
+                                create_group,
+                                group_list,
+                                update_group,
+                                delete_group,
+                                delete_group_confirm,
+                                create_user,
+                                admin_user_update,
+                                admin_delete_user,
+                                admin_delete_user_confirm)
 from django.contrib.auth.views import (LoginView,
                                         LogoutView,
                                         PasswordResetView,
@@ -37,5 +48,9 @@ urlpatterns = [
     path('group/list/',group_list,name='group_list'),
     path('group/update/<int:grp_id>/',update_group,name='update_group'),
     path('group/delete/<int:grp_id>/',delete_group,name='delete_group'),
-    path('group/delete_confirm/<int:grp_id>/',delete_group_confirm,name = 'delete_group_confirm')
+    path('group/delete_confirm/<int:grp_id>/',delete_group_confirm,name = 'delete_group_confirm'),
+    path('user/create/',create_user,name ='create_user'),
+    path('user/update/<int:user_id>/',admin_user_update,name='admin_user_update'),
+    path('user/delete/<int:user_id>/',admin_delete_user,name='admin_delete_user'),
+    path('user/delete_confirm/<int:user_id>/',admin_delete_user_confirm,name='admin_delete_user_confirm')
 ]

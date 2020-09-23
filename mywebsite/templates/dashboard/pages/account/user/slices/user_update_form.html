@@ -1,0 +1,25 @@
+  {% load static %}
+ {% load crispy_forms_tags %}
+
+   <div class="card shadow mb-4 col-md-12">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">User  > Update User</h6>
+            </div>
+            <div class="card-body">
+ <form method='POST' enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            <div class="col-4">
+                {{ form|crispy}}
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </form>
+
+
+
+            </div>
+       
+          </div>

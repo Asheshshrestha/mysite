@@ -19,7 +19,14 @@ class EmailValidation(forms.EmailField):
 
 class SignUpForm(UserCreationForm):
     email = EmailValidation(required=True)
-    
+    groups = forms.ModelMultipleChoiceField(
+        queryset=Group.objects.all(),
+        widget = FilteredSelectMultiple('Groups',is_stacked=False,attrs={'rows':'2'})
+    )
+    class Media:
+        css = {'all': ('/static/admin/css/widgets.css',), }
+        js = ('/admin/jsi18n/',)
+
     class Meta:
         model =User
         fields =('username',

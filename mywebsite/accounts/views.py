@@ -20,13 +20,11 @@ class SignUpView(View):
         return render(request,template_name,{'form':form})
     @login_required
     def post(self, request, *args, **kwargs):
-        #value = {'username':"",'email':"",'first_name':"",'last_name':"",'password1':"Ashesh1234",'password2':"Ashesh1234"}
         form = SignUpForm(request.POST)
         template_name='accounts/success.html'
         if form.is_valid():
             user =form.save(commit=False)
             raw_password = form.cleaned_data['password1']
-            #raw_password =  User.objects.make_random_password(length=8, allowed_chars="abcdefghjkmnpqrstuvwxyz01234567889!@#$%^&*")
             username = form.cleaned_data['username']
             user.set_password(raw_password)
             user.save()
@@ -37,6 +35,16 @@ class SignUpView(View):
             return render(request, 'dashboard/pages/account/register.html', {'form':form})
 
 
+@login_required
+def create_user(request):
+    template_name = 'dashboard/pages/account/user/create_user.html'
+    form = SignUpForm()
+    if request.method == 'POST':
+        pass
+    context = {
+                'form':form
+    }
+    return render(request,template_name,context)
         
 @login_required
 def create_group(request):
@@ -101,6 +109,21 @@ def user_update(request):
     
     return render(request,template_name,{'form':form})
 
+@login_required
+def admin_user_update(request,user_id):
+
+    template_name = 'dashboard/pages/account/user/user_update.html'
+    user = User.objects.get(id=user_id)
+    if request.method == 'POST':
+        form = UserUpadateForm(data=request.POST,instance=user)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'User Data is updated')
+            return redirect('members')
+    else:
+        form = UserUpadateForm(instance=user)
+    return render(request,template_name,{'form':form})
+
 
 @login_required
 def group_list(request):
@@ -158,7 +181,35 @@ def delete_group_confirm(request,grp_id):
         group.delete()
         messages.warning(request,'Group is Deleted')
         return redirect('group_list')
+    else:
+        messages.warning(request,'Group not found')
     context = {
                 'data':group
+    }
+    return render(request,template_name,context)
+
+@login_required
+def admin_delete_user(request,user_id):
+
+    template_name = 'dashboard/pages/account/user/delete_user.html'
+    user = User.objects.get(id=user_id)
+    context = {
+        'data':user
+    }
+    return render(request,template_name,context)
+
+@login_required
+def admin_delete_user_confirm(request,user_id):
+
+    template_name = 'dashboard/pages/account/user/delete_user.html'
+    user = User.objects.get(id=user_id)
+    if user is not None:
+        user.delete()
+        messages.warning(request,'User deleted successfully')
+        return redirect('members')
+    else:
+        messages.warning(request,'User does not exist')
+    context = {
+        'data':user
     }
     return render(request,template_name,context)
