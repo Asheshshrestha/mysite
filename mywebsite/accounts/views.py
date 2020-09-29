@@ -10,6 +10,7 @@ from django.contrib.auth.models import User,Group
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.contrib.auth.decorators import permission_required
 
 
 class SignUpView(View):
@@ -40,7 +41,13 @@ def create_user(request):
     template_name = 'dashboard/pages/account/user/create_user.html'
     form = SignUpForm()
     if request.method == 'POST':
-        pass
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            raw_password = form.cleaned_data['password1']
+            user.set_password(raw_password)
+            user.save()
+            return redirect('members')
     context = {
                 'form':form
     }
@@ -120,7 +127,10 @@ def admin_user_update(request,user_id):
             form.save()
             messages.success(request,'User Data is updated')
             return redirect('members')
+        else:
+            messages.warning(request,'Form is not valid')
     else:
+        messages.warning(request,'Not post method')
         form = UserUpadateForm(instance=user)
     return render(request,template_name,{'form':form})
 
@@ -156,7 +166,7 @@ def update_group(request,grp_id):
             messages.success(request,'Your Group data is updated')
             return redirect('group_list')
         else:
-            messages.warning(request,'Submit a valid form')
+            messages.warning(request,'You Cannot create empty permission.')
             form = UserGroupForm(instance=group)
     else:
         form = UserGroupForm(instance=group)
@@ -213,3 +223,6 @@ def admin_delete_user_confirm(request,user_id):
         'data':user
     }
     return render(request,template_name,context)
+
+
+

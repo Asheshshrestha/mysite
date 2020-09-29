@@ -35,7 +35,8 @@ from mydata.views import (dashboard_index,
                             update_myoffer,
                             delete_myoffer,
                             delete_myoffer_confirm,
-                            add_myoffer
+                            add_myoffer,
+                            not_authorize
                             )
 
 urlpatterns = [
@@ -76,5 +77,6 @@ urlpatterns = [
     path('settings/workspace/integration/Experience/delete_confirm/<int:exp_id>/',delete_experience_confirm,name='delete_experience_confirm'),
     path('settings/workspace/integration/testimonials/delete_confirm/<int:tes_id>/',delete_testimonial_confirm,name='delete_testimonial_confirm'),
     path('settings/workspace/integration/My-Offer/offer/delete_confirm/<int:offer_id>/',delete_myoffer_confirm,name='delete_myoffer_confirm'),
-    path('seo',include('seo_manager.urls'))
+    path('seo',include('seo_manager.urls')),
+    path('unathorize',not_authorize,name='not_authorize')
 ]

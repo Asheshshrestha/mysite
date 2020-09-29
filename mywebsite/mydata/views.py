@@ -26,6 +26,7 @@ from mydata.models import (PersonalData,
                             Offers
                             )
 from django.contrib import messages
+from django.contrib.auth.decorators import permission_required
 # Create your views here.
 
 @login_required
@@ -45,6 +46,7 @@ def dashboard_index(request):
     return render(request,template_name=template_name,context=context)
 
 @login_required
+@permission_required('auth.view_user',login_url='/dashboard/unathorize')
 def members(request):
     template_name = 'dashboard/pages/workspace/member/member.html'
     user_obj = User.objects.all()
@@ -104,6 +106,7 @@ def about_yourself_setting(request):
 
 
 @login_required
+@permission_required('mydata.view_skills',login_url='/dashboard/unathorize')
 def skills_list(request):
 
     template_name ='dashboard/pages/workspace/integration/skills/skills_list.html'
@@ -121,7 +124,7 @@ def skills_list(request):
         'users':skills
     }
     return render(request,template_name,context)
-
+@permission_required('mydata.change_skills',login_url='/dashboard/unathorize')
 @login_required
 def update_skill(request,skills_no):
 
@@ -141,6 +144,7 @@ def update_skill(request,skills_no):
 
 
 @login_required
+@permission_required('mydata.delete_skills',login_url='/dashboard/unathorize')
 def delete_skill(request,skills_id):
 
     template_name = 'dashboard/pages/workspace/integration/skills/skills_delete.html'
@@ -151,6 +155,7 @@ def delete_skill(request,skills_id):
     return render(request,template_name,context)
 
 @login_required
+@permission_required('mydata.delete_skills',login_url='/dashboard/unathorize')
 def delete_skill_confirm(request,skills_id):
 
     template_name = 'dashboard/pages/workspace/integration/skills/skills_delete.html'
@@ -165,6 +170,7 @@ def delete_skill_confirm(request,skills_id):
     return render(request,template_name,context)
 
 @login_required
+@permission_required('mydata.add_skills',login_url='/dashboard/unathorize')
 def add_skill(request):
     template_name = 'dashboard/pages/workspace/integration/skills/skills_update.html'
 
@@ -612,3 +618,8 @@ def add_myoffer(request):
     return render(request,template_name,{'form':form})
 
 
+@login_required
+def not_authorize(request):
+    
+    template_name = 'dashboard/pages/errors/unauthorize_admin.html'
+    return render(request,template_name)

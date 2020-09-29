@@ -52,5 +52,6 @@ urlpatterns = [
     path('user/create/',create_user,name ='create_user'),
     path('user/update/<int:user_id>/',admin_user_update,name='admin_user_update'),
     path('user/delete/<int:user_id>/',admin_delete_user,name='admin_delete_user'),
-    path('user/delete_confirm/<int:user_id>/',admin_delete_user_confirm,name='admin_delete_user_confirm')
+    path('user/delete_confirm/<int:user_id>/',admin_delete_user_confirm,name='admin_delete_user_confirm'),
+    
 ]

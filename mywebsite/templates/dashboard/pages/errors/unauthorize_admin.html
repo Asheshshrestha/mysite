@@ -28,24 +28,27 @@
         {% endblock topbar %}
 
         {% block body %}
-
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
         {% block message %}
         {% include 'dashboard/slices/message.html'%}
         {% endblock message %}
+
+          <!-- Page Heading -->
+        {% block heading %}
+        {% include 'dashboard/pages/errors/slices/page_heading.html'%}
+        {% endblock heading %}
         
-        {% block header %}
-        {% include 'dashboard/pages/workspace/general/slices/page_header.html' %}
-        {% endblock header %}
+
+          <!-- Content Row -->
+          <div class="row">
+          <!-- Content Row -->
         
-        {% block setting_body %}
-        {% include 'dashboard/pages/workspace/general/projects/slices/project_form.html' %}
-        {% endblock setting_body %}
-       
-    
-        
+        {% block group_form %}
+        {% include 'dashboard/pages/errors/slices/unauth_message.html' %}
+        {% endblock group_form %}
+
 
         </div>
         <!-- /.container-fluid -->
@@ -53,7 +56,7 @@
       </div>
       <!-- End of Main Content -->
 
-       {% endblock body %}
+        {% endblock body %}
 
  
         {% block footer %}
@@ -72,6 +75,5 @@
 
   <!--scripts-->
         {% block scripts %}
-        {% include 'dashboard/pages/workspace/integration/slices/load_image.html'%}
         {% include 'dashboard/slices/scripts.html' %}
         {% endblock scripts %}

@@ -43,6 +43,14 @@ class SignUpForm(UserCreationForm):
 class UserUpadateForm(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'readonly':'readonly'}))
     is_staff = forms.BooleanField(widget=forms.CheckboxInput(attrs={'disable':'disable'}))
+    groups = forms.ModelMultipleChoiceField(
+        queryset=Group.objects.all(),
+        widget = FilteredSelectMultiple('Groups',is_stacked=False,attrs={'rows':'2'})
+    )
+    class Media:
+        css = {'all': ('/static/admin/css/widgets.css',), }
+        js = ('/admin/jsi18n/',)
+
     class Meta:
         model = User
         fields = (
@@ -50,13 +58,15 @@ class UserUpadateForm(forms.ModelForm):
             'email',
             'first_name',
             'last_name',
-            'is_staff'
+            'is_staff',
+            'groups',
+            
         )
 class UserGroupForm(forms.ModelForm):
 
     permissions = forms.ModelMultipleChoiceField(
         queryset=Permission.objects.all(),
-        widget = FilteredSelectMultiple('permissions',is_stacked=False,attrs={'rows':'2'})
+        widget = FilteredSelectMultiple('permissions',is_stacked=False)
     )
     class Media:
         css = {'all': ('/static/admin/css/widgets.css',), }
