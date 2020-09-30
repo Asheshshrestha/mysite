@@ -69,7 +69,7 @@ class UserGroupForm(forms.ModelForm):
         widget = FilteredSelectMultiple('permissions',is_stacked=False)
     )
     class Media:
-        css = {'all': ('/static/admin/css/widgets.css',), }
+        css = {'all': ('/static/admin/css/widgets.css',),}
         js = ('/admin/jsi18n/',)
 
     class Meta:

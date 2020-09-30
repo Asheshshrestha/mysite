@@ -67,13 +67,7 @@ def members(request):
     return render(request,template_name,context)
 
 @login_required
-def general_setting(request):
-
-    template_name = 'dashboard/pages/workspace/general/general.html'
-
-    return render(request,template_name)
-
-@login_required
+@permission_required('mydata.change_personaldata',login_url='/dashboard/unathorize')
 def personal_info_setting(request):
     data = PersonalData.objects.first()
     template_name ='dashboard/pages/workspace/integration/intro_setting_page.html'
@@ -89,6 +83,7 @@ def personal_info_setting(request):
     return render(request,template_name,{'form':form,'data':data})
 
 @login_required
+@permission_required('mydata.change_aboutmyself',login_url='/dashboard/unathorize')
 def about_yourself_setting(request):
     
     data = AboutMyself.objects.first()
@@ -103,7 +98,6 @@ def about_yourself_setting(request):
         form = AboutMyselfForm(instance=data)
 
     return render(request,template_name,{'form':form,'data':data})
-
 
 @login_required
 @permission_required('mydata.view_skills',login_url='/dashboard/unathorize')
@@ -124,6 +118,7 @@ def skills_list(request):
         'users':skills
     }
     return render(request,template_name,context)
+
 @permission_required('mydata.change_skills',login_url='/dashboard/unathorize')
 @login_required
 def update_skill(request,skills_no):
@@ -141,7 +136,6 @@ def update_skill(request,skills_no):
         form = SkillsForm(instance=skill)
 
     return render(request,template_name,{'form':form})
-
 
 @login_required
 @permission_required('mydata.delete_skills',login_url='/dashboard/unathorize')
@@ -187,6 +181,7 @@ def add_skill(request):
     return render(request,template_name,{'form':form})
  
 @login_required
+@permission_required('mydata.view_workcount',login_url='/dashboard/unathorize')
 def work_count_list(request):
 
     template_name ='dashboard/pages/workspace/integration/work_count/work_count_list.html'
@@ -205,8 +200,8 @@ def work_count_list(request):
     }
     return render(request,template_name,context)
 
-
 @login_required
+@permission_required('mydata.change_workcount',login_url='/dashboard/unathorize')
 def update_work_count(request,work_count_id):
 
     template_name = 'dashboard/pages/workspace/integration/work_count/work_count_update.html'
@@ -223,8 +218,8 @@ def update_work_count(request,work_count_id):
 
     return render(request,template_name,{'form':form})
 
-
 @login_required
+@permission_required('mydata.delete_workcount',login_url='/dashboard/unathorize')
 def delete_work_count(request,work_count_id):
 
     template_name = 'dashboard/pages/workspace/integration/work_count/work_count_delete.html'
@@ -234,8 +229,8 @@ def delete_work_count(request,work_count_id):
     }
     return render(request,template_name,context)
 
-
 @login_required
+@permission_required('mydata.delete_workcount',login_url='/dashboard/unathorize')
 def delete_work_count_confirm(request,work_count_id):
 
     template_name = 'dashboard/pages/workspace/integration/work_count/work_count_delete.html'
@@ -250,6 +245,7 @@ def delete_work_count_confirm(request,work_count_id):
     return render(request,template_name,context)
 
 @login_required
+@permission_required('mydata.add_workcount',login_url='/dashboard/unathorize')
 def add_work_count(request):
     template_name = 'dashboard/pages/workspace/integration/work_count/add_work_count.html'
 
@@ -265,8 +261,8 @@ def add_work_count(request):
 
     return render(request,template_name,{'form':form})
 
-
 @login_required
+@permission_required('mydata.view_education',login_url='/dashboard/unathorize')
 def education_list(request):
 
     template_name ='dashboard/pages/workspace/integration/education/education_setting_page.html'
@@ -287,6 +283,7 @@ def education_list(request):
     return render(request,template_name,context)
 
 @login_required
+@permission_required('mydata.change_education',login_url='/dashboard/unathorize')
 def update_education(request,education_id):
 
     template_name = 'dashboard/pages/workspace/integration/education/education_update.html'
@@ -303,8 +300,8 @@ def update_education(request,education_id):
 
     return render(request,template_name,{'form':form})
 
-
 @login_required
+@permission_required('mydata.delete_education',login_url='/dashboard/unathorize')
 def delete_education(request,education_id):
 
     template_name = 'dashboard/pages/workspace/integration/education/education_delete.html'
@@ -315,6 +312,7 @@ def delete_education(request,education_id):
     return render(request,template_name,context)
 
 @login_required
+@permission_required('mydata.delete_education',login_url='/dashboard/unathorize')
 def delete_education_confirm(request,education_id):
 
     template_name = 'dashboard/pages/workspace/integration/education/education_delete.html'
@@ -329,6 +327,7 @@ def delete_education_confirm(request,education_id):
     return render(request,template_name,context)
 
 @login_required
+@permission_required('mydata.add_education',login_url='/dashboard/unathorize')
 def add_education(request):
     template_name = 'dashboard/pages/workspace/integration/education/add_education.html'
 
@@ -345,6 +344,7 @@ def add_education(request):
     return render(request,template_name,{'form':form})
 
 @login_required
+@permission_required('mydata.view_experience',login_url='/dashboard/unathorize')
 def experience_list(request):
 
     template_name ='dashboard/pages/workspace/integration/experience/experience_list.html'
@@ -365,8 +365,8 @@ def experience_list(request):
     }
     return render(request,template_name,context)
 
-
 @login_required
+@permission_required('mydata.change_experience',login_url='/dashboard/unathorize')
 def update_experience(request,exp_id):
 
     template_name = 'dashboard/pages/workspace/integration/experience/experience_update.html'
@@ -383,9 +383,8 @@ def update_experience(request,exp_id):
 
     return render(request,template_name,{'form':form})
 
-
-
 @login_required
+@permission_required('mydata.delete_experience',login_url='/dashboard/unathorize')
 def delete_experience(request,exp_id):
 
     template_name = 'dashboard/pages/workspace/integration/experience/experience_delete.html'
@@ -396,6 +395,7 @@ def delete_experience(request,exp_id):
     return render(request,template_name,context)
 
 @login_required
+@permission_required('mydata.delete_experience',login_url='/dashboard/unathorize')
 def delete_experience_confirm(request,exp_id):
 
     template_name = 'dashboard/pages/workspace/integration/experience/experience_delete.html'
@@ -410,6 +410,7 @@ def delete_experience_confirm(request,exp_id):
     return render(request,template_name,context)
 
 @login_required
+@permission_required('mydata.add_experience',login_url='/dashboard/unathorize')
 def add_experience(request):
 
     template_name = 'dashboard/pages/workspace/integration/experience/add_experience.html'
@@ -426,8 +427,8 @@ def add_experience(request):
 
     return render(request,template_name,{'form':form})
 
-
 @login_required
+@permission_required('mydata.view_testimonials',login_url='/dashboard/unathorize')
 def testimonial_setting(request):
     
     data = Testimonials.objects.first()
@@ -444,6 +445,7 @@ def testimonial_setting(request):
     return render(request,template_name,{'form':form,'data':data})
 
 @login_required
+@permission_required('mydata.view_testimonials',login_url='/dashboard/unathorize')
 def testimonial_list(request):
 
     template_name ='dashboard/pages/workspace/integration/testimonials/testimonials_list.html'
@@ -463,6 +465,7 @@ def testimonial_list(request):
     return render(request,template_name,context)
 
 @login_required
+@permission_required('mydata.change_testimonials',login_url='/dashboard/unathorize')
 def update_testimonial(request,tes_id):
 
     template_name = 'dashboard/pages/workspace/integration/testimonials/testimonial_update.html'
@@ -479,8 +482,8 @@ def update_testimonial(request,tes_id):
 
     return render(request,template_name,{'form':form})
 
-
 @login_required
+@permission_required('mydata.delete_testimonials',login_url='/dashboard/unathorize')
 def delete_testimonial(request,tes_id):
 
     template_name = 'dashboard/pages/workspace/integration/testimonials/testimonial_delete.html'
@@ -491,6 +494,7 @@ def delete_testimonial(request,tes_id):
     return render(request,template_name,context)
 
 @login_required
+@permission_required('mydata.delete_testimonials',login_url='/dashboard/unathorize')
 def delete_testimonial_confirm(request,tes_id):
 
     template_name = 'dashboard/pages/workspace/integration/testimonials/testimonial_delete.html'
@@ -505,6 +509,7 @@ def delete_testimonial_confirm(request,tes_id):
     return render(request,template_name,context)
 
 @login_required
+@permission_required('mydata.add_testimonials',login_url='/dashboard/unathorize')
 def add_testimonial(request):
     template_name = 'dashboard/pages/workspace/integration/testimonials/add_testimonial.html'
 
@@ -521,6 +526,7 @@ def add_testimonial(request):
     return render(request,template_name,{'form':form})
 
 @login_required
+@permission_required('mydata.view_myoffertoclient',login_url='/dashboard/unathorize')
 def myoffer_setting(request):
     
     data = OfferToClient.objects.first()
@@ -536,9 +542,8 @@ def myoffer_setting(request):
 
     return render(request,template_name,{'form':form,'data':data})
 
-
-
 @login_required
+@permission_required('mydata.view_offers',login_url='/dashboard/unathorize')
 def myoffer_list(request):
 
     template_name ='dashboard/pages/workspace/integration/offers/offer_list.html'
@@ -557,9 +562,8 @@ def myoffer_list(request):
     }
     return render(request,template_name,context)
 
-
-
 @login_required
+@permission_required('mydata.change_offers',login_url='/dashboard/unathorize')
 def update_myoffer(request,offer_id):
 
     template_name = 'dashboard/pages/workspace/integration/offers/offer_update.html'
@@ -576,8 +580,8 @@ def update_myoffer(request,offer_id):
 
     return render(request,template_name,{'form':form})
 
-
 @login_required
+@permission_required('mydata.delete_offers',login_url='/dashboard/unathorize')
 def delete_myoffer(request,offer_id):
 
     template_name = 'dashboard/pages/workspace/integration/offers/offer_delete.html'
@@ -588,6 +592,7 @@ def delete_myoffer(request,offer_id):
     return render(request,template_name,context)
 
 @login_required
+@permission_required('mydata.delete_offers',login_url='/dashboard/unathorize')
 def delete_myoffer_confirm(request,offer_id):
 
     template_name = 'dashboard/pages/workspace/integration/offers/offer_delete.html'
@@ -602,6 +607,7 @@ def delete_myoffer_confirm(request,offer_id):
     return render(request,template_name,context)
 
 @login_required
+@permission_required('mydata.add_offers',login_url='/dashboard/unathorize')
 def add_myoffer(request):
     template_name = 'dashboard/pages/workspace/integration/offers/add_offer.html'
 
@@ -616,7 +622,6 @@ def add_myoffer(request):
         form = OffersForm()
 
     return render(request,template_name,{'form':form})
-
 
 @login_required
 def not_authorize(request):
