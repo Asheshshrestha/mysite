@@ -37,15 +37,18 @@
 
           <!-- Page Heading -->
         {% block heading %}
-        {% include 'dashboard/pages/seo_management/slices/page_heading.html'%}
+        {% include 'dashboard/pages/account/group/slices/page_heading.html'%}
         {% endblock heading %}
         
 
-        {% block seo_table %}
-        {% include 'dashboard/pages/seo_management/slices/seo_table.html' %}
-        {% endblock seo_table %}
-
+          <!-- Content Row -->
+          <div class="row">
+          <!-- Content Row -->
         
+        {% block group_form %}
+        {% include 'dashboard/pages/seo_management/slices/seo_tag_delete_warning.html' %}
+        {% endblock group_form %}
+
 
         </div>
         <!-- /.container-fluid -->

@@ -10,8 +10,9 @@ from mydata.models import (PersonalData,
                             Education,
                             OfferToClient,
                             Testimonials)
+from seo_manager.decorators import register_page
 # Create your views here.
-
+@register_page
 def home(request):
 
     template_name="pages/index/index.html"
@@ -32,7 +33,7 @@ def home(request):
                 'testimonials':testimonials
                 }
     return render(request,template_name,context=context)
-
+@register_page
 def aboutus(request):
     template_name = "pages/about_us/about-us.html"
     prof_data = PersonalData.objects.first()
@@ -44,7 +45,7 @@ def aboutus(request):
                  'testimonials':testimonials
     }
     return render(request,template_name,context=context)
-
+@register_page
 def blogs(request):
     template_name = "pages/blogs/blog.html"
     blogs_obj = BlogModel.objects.all()
@@ -72,11 +73,12 @@ def blogs(request):
         'p_blog':p_blogs
     }
     return render(request,template_name,context)
-
+@register_page
 def contactus(request):
     template_name = "pages/contact_us/contact.html"
     return render(request,template_name)
 
+@register_page
 def services(request):
     template_name = "pages/services/services.html"
     offer_to_clients = OfferToClient.objects.first()
@@ -87,6 +89,7 @@ def services(request):
                 }
     return render(request,template_name,context=context)
 
+@register_page
 def single_blog(request,blog_id):
     template_name = "pages/blogs/single_blog/single_blog.html"
     blog = BlogModel.objects.get(id= blog_id)
@@ -101,7 +104,8 @@ def single_blog(request,blog_id):
         'p_blog':p_blogs
     }
     return render(request,template_name,context)
-
+    
+@register_page
 def projects(request):
     template_name = "pages/projects/projects.html"
     project_list = ProjectName.objects.all()
