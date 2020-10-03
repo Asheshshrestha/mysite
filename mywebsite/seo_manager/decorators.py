@@ -1,4 +1,5 @@
-from seo_manager.models import ActionModel
+from django.http import request
+from seo_manager.models import ActionModel,SEOModel
 
 
 def register_page(func):
@@ -7,4 +8,5 @@ def register_page(func):
         return func(*func_args, **func_kwargs)
     return echo_func
     
-    
+
+

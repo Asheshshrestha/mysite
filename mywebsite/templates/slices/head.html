@@ -4,7 +4,23 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png">
-        <title>ASHESH SHRESTHA</title>
+        
+        {% if seo_tags %}
+        <title>{{ seo_tags.page_title }}</title>
+        <meta property="og:title" content="{{ seo_tags.page_title}}">
+        <meta property="og:image" content="{{ seo_tags.page_image.url }}">
+        <meta name="keywords" content="{{ seo_tags.keywords }}"/>
+        <meta name="description" content="{{ seo_tags.page_description }}"/>
+        <meta name="copyright"content="{{ seo_tags.copyright }}">
+        <meta name="language" content="ES">
+        <meta name="robots" content="{{ seo_tags.robots }}" />
+        <meta name="summary" content="{{ seo_tags.summary }}">
+        <meta name="Classification" content="Business">
+        <meta name="url" content="{{ seo_tags.url }}">
+        <meta name="identifier-URL" content="{{ seo_tags.url }}">
+        <meta name="distribution" content="Global">
+        
+        {% endif%}
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
         <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">

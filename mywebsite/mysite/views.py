@@ -11,6 +11,7 @@ from mydata.models import (PersonalData,
                             OfferToClient,
                             Testimonials)
 from seo_manager.decorators import register_page
+from seo_manager.models import SEOModel
 # Create your views here.
 @register_page
 def home(request):
@@ -23,7 +24,10 @@ def home(request):
     offer_to_clients = OfferToClient.objects.first()
     project_list = ProjectName.objects.all()[:6]
     testimonials = Testimonials.objects.first()
+    seo_tags = SEOModel.objects.filter(action__action_name = 'home').first()
+    
     context = {
+                'seo_tags':seo_tags,
                 'projects':project_list,
                 'profile':prof_data,
                 'about' : about_data,
@@ -39,7 +43,9 @@ def aboutus(request):
     prof_data = PersonalData.objects.first()
     about_data = AboutMyself.objects.first()
     testimonials = Testimonials.objects.first()
+    seo_tags = SEOModel.objects.filter(action__action_name = 'aboutus').first()
     context = {
+                'seo_tags':seo_tags,
                 'profile':prof_data,
                 'about' : about_data,
                  'testimonials':testimonials
@@ -49,6 +55,7 @@ def aboutus(request):
 def blogs(request):
     template_name = "pages/blogs/blog.html"
     blogs_obj = BlogModel.objects.all()
+    seo_tags = SEOModel.objects.filter(action__action_name = 'blogs').first()
     query = request.GET.get("q")
     if query:
         blogs_obj = blogs_obj.filter(
@@ -68,6 +75,7 @@ def blogs(request):
     b_counts = BlogModel.objects.values('category').annotate(count=Count('category'))
     p_blogs = BlogModel.objects.all().order_by('-view_count')[:4]
     context = {
+        'seo_tags':seo_tags,
         'blogs':blogs,
         'b_counts':b_counts,
         'p_blog':p_blogs
@@ -76,14 +84,20 @@ def blogs(request):
 @register_page
 def contactus(request):
     template_name = "pages/contact_us/contact.html"
-    return render(request,template_name)
+    seo_tags = SEOModel.objects.filter(action__action_name = 'contactus').first()
+    context = {
+                'seo_tags':seo_tags,
+    }
+    return render(request,template_name,context)
 
 @register_page
 def services(request):
     template_name = "pages/services/services.html"
     offer_to_clients = OfferToClient.objects.first()
     testimonials = Testimonials.objects.first
+    seo_tags = SEOModel.objects.filter(action__action_name = 'services').first()
     context = {
+                'seo_tags':seo_tags,
                 'offer':offer_to_clients,
                 'testimonials':testimonials
                 }
@@ -109,7 +123,9 @@ def single_blog(request,blog_id):
 def projects(request):
     template_name = "pages/projects/projects.html"
     project_list = ProjectName.objects.all()
+    seo_tags = SEOModel.objects.filter(action__action_name = 'projects').first()
     context={
+        'seo_tags':seo_tags,
         'projects':project_list
     }
     return render(request,template_name,context)
